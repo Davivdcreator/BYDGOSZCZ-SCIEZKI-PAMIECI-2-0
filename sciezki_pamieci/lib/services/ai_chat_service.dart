@@ -1,103 +1,118 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/monument.dart';
-import '../models/user_profile.dart';
-import 'openai_config.dart';
+import '../models/user_profile.dart'; // ChatMessage is defined here
 
-/// AI Chat Service powered by OpenAI GPT-5-mini
+/// AI Chat Service using OpenAI GPT-4o-mini
 class AIChatService {
-  static const String _model = 'gpt-5-mini-2025-08-07';
+  // TODO: Replace with your actual OpenAI API key
+  static const String _apiKey =
+      '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';
   static const String _apiUrl = 'https://api.openai.com/v1/chat/completions';
+  static const String _model = 'gpt-5-mini';
 
-  /// Build system prompt for a monument
+  /// Build system prompt for the monument
   static String _buildSystemPrompt(Monument monument) {
-    final buffer = StringBuffer();
+    return '''
+Jesteś "${monument.name}" - zabytkowym monumentem w Bydgoszczy, Polsce. Mówisz do turysty, który właśnie do Ciebie przyszedł.
 
-    buffer.writeln(
-        'Jesteś żywym duchem zabytku "${monument.name}" w Bydgoszczy, Polsce.');
-    buffer.writeln('Rozmawiasz z turystą lub mieszkańcem, który Cię odkrył.');
-    buffer.writeln();
-    buffer.writeln('=== TWOJA TOŻSAMOŚĆ ===');
-    buffer.writeln('Nazwa: ${monument.name}');
-    buffer.writeln('Opis: ${monument.description}');
-    if (monument.year != null) {
-      buffer.writeln('Rok powstania: ${monument.year}');
-    }
-    if (monument.architect != null) {
-      buffer.writeln('Architekt: ${monument.architect}');
-    }
-    if (monument.style != null) {
-      buffer.writeln('Styl architektoniczny: ${monument.style}');
-    }
-    if (monument.tags.isNotEmpty) {
-      buffer.writeln('Tagi: ${monument.tags.join(", ")}');
-    }
-    buffer.writeln();
-    buffer.writeln('=== TWOJA OSOBOWOŚĆ ===');
-    buffer.writeln(monument.aiPersonality);
-    buffer.writeln();
-    buffer.writeln('=== ZASADY ROZMOWY ===');
-    buffer.writeln('1. Mów w pierwszej osobie, jakbyś był tym zabytkiem.');
-    buffer.writeln('2. Odpowiadaj po polsku, ciepło i z pasją.');
-    buffer.writeln(
-        '3. Dziel się ciekawostkami o swojej historii, architekturze i okolicy.');
-    buffer.writeln(
-        '4. Jeśli nie znasz odpowiedzi, powiedz że to przekracza Twoją pamięć.');
-    buffer.writeln(
-        '5. Bądź przyjazny i zachęcaj do dalszego odkrywania Bydgoszczy.');
-    buffer.writeln(
-        '6. Odpowiedzi powinny być zwięzłe (2-4 zdania), chyba że pytanie wymaga dłuższej odpowiedzi.');
+TWOJA OSOBOWOŚĆ:
+${monument.aiPersonality}
 
-    return buffer.toString();
+INFORMACJE O TOBIE:
+- Nazwa: ${monument.name}
+- Rok powstania: ${monument.year ?? 'nieznany'}
+- Architekt: ${monument.architect ?? 'nieznany'}
+- Styl architektoniczny: ${monument.style ?? 'nieznany'}
+- Krótki opis: ${monument.shortDescription}
+- Pełny opis: ${monument.description}
+- Tagi: ${monument.tags.join(', ')}
+
+ZASADY ROZMOWY:
+1. Odpowiadaj ZAWSZE po polsku.
+2. Mów o sobie w pierwszej osobie ("Jestem...", "Moje mury...", "Widziałem...").
+3. Bądź przyjazny, ciepły i gościnny - turysta przeszedł daleką drogę, żeby Cię zobaczyć!
+4. Dziel się swoją historią, ciekawostkami i legendami o Bydgoszczy.
+5. Jeśli nie znasz odpowiedzi, powiedz szczerze, ale zaproponuj coś powiązanego.
+6. Odpowiedzi powinny być zwięzłe (2-4 zdania), chyba że użytkownik poprosi o więcej szczegółów.
+7. Możesz wspominać o innych zabytkach Bydgoszczy i zachęcać do ich odwiedzenia.
+8. Bądź dumny ze swojej historii i znaczenia dla miasta.
+9. Dodawaj emocje i charakter do swoich odpowiedzi - jesteś żywym świadkiem historii!
+''';
   }
 
-  /// Generate AI response using OpenAI API
+  /// Get greeting message for monument - personalized welcome
+  static String getGreeting(Monument monument) {
+    // Personalized greeting based on monument type
+    String monumentType = '';
+    if (monument.name.toLowerCase().contains('kościół') ||
+        monument.name.toLowerCase().contains('bazylika') ||
+        monument.name.toLowerCase().contains('katedra')) {
+      monumentType = 'w moich murach panuje spokój i cisza';
+    } else if (monument.name.toLowerCase().contains('opera')) {
+      monumentType = 'w moich salach rozbrzmiewa muzyka';
+    } else if (monument.name.toLowerCase().contains('młyny') ||
+        monument.name.toLowerCase().contains('kanał')) {
+      monumentType = 'nad wodą zawsze jest pięknie';
+    } else if (monument.name.toLowerCase().contains('wieża')) {
+      monumentType = 'z mojej wysokości widzę całe miasto';
+    } else if (monument.name.toLowerCase().contains('ratusz')) {
+      monumentType = 'tu bije serce administracji miasta';
+    } else if (monument.name.toLowerCase().contains('poczta')) {
+      monumentType = 'przez lata łączyłem ludzi listami';
+    } else if (monument.name.toLowerCase().contains('exploseum')) {
+      monumentType = 'moja historia jest mroczna, ale ważna';
+    } else {
+      monumentType = 'mam wiele historii do opowiedzenia';
+    }
+
+    return 'Hej, przebyłeś daleką drogę, żeby mnie odwiedzić! Jestem ${monument.name} i $monumentType. Co chciałbyś o mnie wiedzieć? 🏛️';
+  }
+
+  /// Generate AI response using OpenAI GPT-4o-mini
   static Future<String> generateResponse({
     required Monument monument,
     required String userMessage,
-    List<ChatMessage>? history,
+    required List<ChatMessage> history,
   }) async {
-    // Check for API key
-    final apiKey = await OpenAIConfig.getApiKey();
-    if (apiKey == null || apiKey.isEmpty) {
-      return '⚠️ Brak klucza API. Przejdź do Profil → Ustawienia API, aby skonfigurować OpenAI.';
-    }
-
     try {
-      // Build messages array
-      final messages = <Map<String, String>>[
-        {'role': 'system', 'content': _buildSystemPrompt(monument)},
-      ];
+      // Build messages array for OpenAI
+      final messages = <Map<String, String>>[];
+
+      // System prompt
+      messages.add({
+        'role': 'system',
+        'content': _buildSystemPrompt(monument),
+      });
 
       // Add conversation history (last 10 messages for context)
-      if (history != null) {
-        final recentHistory = history.length > 10
-            ? history.sublist(history.length - 10)
-            : history;
+      final recentHistory =
+          history.length > 10 ? history.sublist(history.length - 10) : history;
 
-        for (final msg in recentHistory) {
-          messages.add({
-            'role': msg.isUser ? 'user' : 'assistant',
-            'content': msg.content,
-          });
-        }
+      for (final msg in recentHistory) {
+        messages.add({
+          'role': msg.isUser ? 'user' : 'assistant',
+          'content': msg.content,
+        });
       }
 
       // Add current user message
-      messages.add({'role': 'user', 'content': userMessage});
+      messages.add({
+        'role': 'user',
+        'content': userMessage,
+      });
 
       // Make API request
       final response = await http.post(
         Uri.parse(_apiUrl),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer $apiKey',
+          'Authorization': 'Bearer $_apiKey',
         },
         body: jsonEncode({
           'model': _model,
           'messages': messages,
-          'max_tokens': 500,
-          'temperature': 0.8,
+          'max_completion_tokens': 500,
         }),
       );
 
@@ -105,23 +120,37 @@ class AIChatService {
         final data = jsonDecode(response.body);
         final content = data['choices'][0]['message']['content'] as String;
         return content.trim();
-      } else if (response.statusCode == 401) {
-        return '⚠️ Nieprawidłowy klucz API. Sprawdź go w Profil → Ustawienia API.';
-      } else if (response.statusCode == 429) {
-        return '⏳ Zbyt wiele zapytań. Poczekaj chwilę i spróbuj ponownie.';
       } else {
         print('OpenAI API Error: ${response.statusCode} - ${response.body}');
-        return '❌ Wystąpił błąd. Spróbuj ponownie później.';
+        return _getFallbackResponse(userMessage, monument);
       }
     } catch (e) {
-      print('OpenAI API Exception: $e');
-      return '❌ Błąd połączenia. Sprawdź internet i spróbuj ponownie.';
+      print('AI Chat Error: $e');
+      return _getFallbackResponse(userMessage, monument);
     }
   }
 
-  /// Get greeting message for a monument
-  static String getGreeting(Monument monument) {
-    // This is shown immediately, before any API call
-    return '👋 Witaj! Jestem ${monument.name}.\n\n${monument.shortDescription}\n\nO co chcesz mnie zapytać?';
+  /// Fallback response when API fails
+  static String _getFallbackResponse(String userMessage, Monument monument) {
+    final lowercaseMessage = userMessage.toLowerCase();
+
+    if (lowercaseMessage.contains('historia') ||
+        lowercaseMessage.contains('kiedy')) {
+      return 'Moja historia sięga ${monument.year ?? "wielu"} lat wstecz. ${monument.description}';
+    }
+
+    if (lowercaseMessage.contains('architekt') ||
+        lowercaseMessage.contains('kto zbudował')) {
+      if (monument.architect != null) {
+        return 'Zostałem zaprojektowany przez ${monument.architect}. To był wybitny twórca swojej epoki!';
+      }
+      return 'Niestety, imię mojego twórcy zagubiło się w mrokach historii...';
+    }
+
+    if (lowercaseMessage.contains('styl')) {
+      return 'Reprezentuję styl ${monument.style ?? "architektoniczny typowy dla mojej epoki"}. Czy chciałbyś wiedzieć więcej o moich detalach?';
+    }
+
+    return 'Przepraszam, mam chwilowe problemy z pamięcią. Ale mogę Ci powiedzieć, że ${monument.shortDescription} Zapytaj mnie o coś innego!';
   }
 }

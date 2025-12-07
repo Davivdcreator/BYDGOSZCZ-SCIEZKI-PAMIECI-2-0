@@ -42,7 +42,9 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
     _initLocationTracking();
     // Auto-update unique monuments with new photos
-    MonumentsService().autoUpdateUniqueMonuments();
+    final service = MonumentsService();
+    service.autoUpdateUniqueMonuments();
+    service.removeDuplicates(); // Auto-cleanup duplicates
   }
 
   @override
