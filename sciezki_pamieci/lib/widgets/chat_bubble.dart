@@ -63,7 +63,7 @@ class ChatBubble extends StatelessWidget {
                 animatedTexts: [
                   TypewriterAnimatedText(
                     message,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 15,
                       height: 1.5,
@@ -77,7 +77,7 @@ class ChatBubble extends StatelessWidget {
               )
             : Text(
                 message,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 15,
                   height: 1.5,

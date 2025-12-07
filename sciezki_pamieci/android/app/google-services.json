@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "35606195802",
+    "project_id": "sciezki-pamieci-app",
+    "storage_bucket": "sciezki-pamieci-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35606195802:android:c427bd4a5327df59ecb263",
+        "android_client_info": {
+          "package_name": "com.example.sciezki_pamieci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35606195802-snik51skc4qdhjmpk44rq9hlhk05gce4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sciezki_pamieci",
+            "certificate_hash": "31dd250f2f7cdb276e549ee727b7af7c9b081e72"
+          }
+        },
+        {
+          "client_id": "35606195802-ujdlt0bkm83igjm8f7t1mpae8k4f0pjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLOM2Fxb9D0wuShIdMgG2XxJ1q-qZEcQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35606195802-ujdlt0bkm83igjm8f7t1mpae8k4f0pjt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "35606195802-k97fhm12vl29fvb3841c08rh71p6jitu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sciezkiPamieci"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

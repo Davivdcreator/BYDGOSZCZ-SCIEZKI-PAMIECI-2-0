@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
+import 'login_screen.dart';
 import '../widgets/copper_button.dart';
-import 'map_screen.dart';
 
-/// Screen 1: "Wrota Czasu" - Onboarding Screen
-/// First impression - builds the atmosphere of mystery
+/// Screen 1: Onboarding - "Wrota Czasu"
+/// Clean, modern entry point with Bydgoszcz branding
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -14,278 +14,241 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen>
-    with TickerProviderStateMixin {
-  late AnimationController _fadeController;
-  late AnimationController _logoController;
-  late Animation<double> _fadeAnimation;
-  late Animation<double> _logoScale;
-  late Animation<double> _logoOpacity;
-  
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeIn;
+  late Animation<double> _slideUp;
+
   @override
   void initState() {
     super.initState();
-    
-    _fadeController = AnimationController(
+    _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 1200),
     );
-    
-    _logoController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
+
+    _fadeIn = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _controller, curve: const Interval(0, 0.6)),
     );
-    
-    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn),
+
+    _slideUp = Tween<double>(begin: 30, end: 0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
     );
-    
-    _logoScale = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _logoController, curve: Curves.elasticOut),
-    );
-    
-    _logoOpacity = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _logoController, curve: Curves.easeIn),
-    );
-    
-    // Start animations
-    _fadeController.forward();
-    Future.delayed(const Duration(milliseconds: 500), () {
-      _logoController.forward();
-    });
+
+    _controller.forward();
   }
-  
+
   @override
   void dispose() {
-    _fadeController.dispose();
-    _logoController.dispose();
+    _controller.dispose();
     super.dispose();
-  }
-  
-  void _onStartPressed() {
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const MapScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-        transitionDuration: const Duration(milliseconds: 800),
-      ),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Background with paper texture and sepia overlay
-          Container(
-            decoration: const BoxDecoration(
-              color: AppTheme.porcelainWhite,
-            ),
+      backgroundColor: AppTheme.background,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              AppTheme.primaryBlue.withOpacity(0.05),
+              AppTheme.background,
+              AppTheme.background,
+            ],
           ),
-          
-          // Paper texture
-          Opacity(
-            opacity: 0.45,
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/textures/wooden-floor-background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          
-          // Sepia overlay (simulating video with sepia filter)
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  AppTheme.sepiaOverlay.withOpacity(0.3),
-                  AppTheme.sepiaOverlay.withOpacity(0.5),
-                  AppTheme.copperDark.withOpacity(0.4),
-                ],
-              ),
-            ),
-          ),
-          
-          // Animated river effect (simulated with gradient)
-          Positioned.fill(
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: AnimatedBuilder(
-              animation: _fadeController,
+              animation: _controller,
               builder: (context, child) {
                 return Opacity(
-                  opacity: _fadeAnimation.value * 0.3,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          AppTheme.riverBlue.withOpacity(0.2),
-                          Colors.transparent,
-                          AppTheme.riverBlue.withOpacity(0.2),
-                        ],
-                      ),
-                    ),
+                  opacity: _fadeIn.value,
+                  child: Transform.translate(
+                    offset: Offset(0, _slideUp.value),
+                    child: child,
                   ),
                 );
               },
-            ),
-          ),
-          
-          // Main content
-          FadeTransition(
-            opacity: _fadeAnimation,
-            child: SafeArea(
               child: Column(
                 children: [
                   const Spacer(flex: 2),
-                  
-                  // Animated Logo
-                  AnimatedBuilder(
-                    animation: _logoController,
-                    builder: (context, child) {
-                      return Transform.scale(
-                        scale: _logoScale.value,
-                        child: Opacity(
-                          opacity: _logoOpacity.value,
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: _buildLogo(),
-                  ),
-                  
-                  const SizedBox(height: 32),
-                  
+
+                  // Logo area
+                  _buildLogo(),
+
+                  const SizedBox(height: 48),
+
                   // Title
                   Text(
-                    'ŚCIEŻKI PAMIĘCI',
-                    style: GoogleFonts.playfairDisplay(
+                    'Ścieżki Pamięci',
+                    style: GoogleFonts.inter(
                       fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      letterSpacing: 4,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withOpacity(0.5),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
+                      fontWeight: FontWeight.w700,
+                      color: AppTheme.textPrimary,
+                      letterSpacing: -0.5,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                  
+
                   const SizedBox(height: 8),
-                  
+
                   Text(
-                    'BYDGOSZCZ',
-                    style: GoogleFonts.roboto(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white.withOpacity(0.8),
-                      letterSpacing: 8,
+                    'Bydgoszcz',
+                    style: GoogleFonts.inter(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: AppTheme.primaryBlue,
+                      letterSpacing: 2,
                     ),
                   ),
-                  
-                  const Spacer(flex: 2),
-                  
-                  // Seal button
-                  SealButton(
-                    text: 'ODBIERZ\nPASZPORT\nODKRYWCY',
-                    onPressed: _onStartPressed,
+
+                  const SizedBox(height: 24),
+
+                  // Subtitle
+                  Text(
+                    'Odkrywaj historię miasta poprzez\npomniki, rzeźby i ciekawe miejsca',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      color: AppTheme.textSecondary,
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  
-                  const SizedBox(height: 32),
-                  
-                  // Micro-copy
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
+
+                  const Spacer(flex: 2),
+
+                  // CTA Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: GradientButton(
+                      text: 'Rozpocznij przygodę',
+                      icon: Icons.explore_outlined,
+                      isLarge: true,
+                      onPressed: _navigateToMap,
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Skip text
+                  TextButton(
+                    onPressed: _navigateToMap,
                     child: Text(
-                      '"Bydgoszcz ma głos.\nCzy jesteś gotów go usłyszeć?"',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 16,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.white.withOpacity(0.9),
-                        height: 1.5,
-                        shadows: [
-                          Shadow(
-                            color: Colors.black.withOpacity(0.3),
-                            blurRadius: 8,
-                          ),
-                        ],
+                      'Mam już konto',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        color: AppTheme.textMuted,
                       ),
                     ),
                   ),
-                  
-                  const Spacer(),
+
+                  const SizedBox(height: 32),
                 ],
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildLogo() {
-    return Container(
-      width: 120,
-      height: 120,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: AppTheme.copperGradient,
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.oxidizedCopper.withOpacity(0.5),
-            blurRadius: 30,
-            spreadRadius: 5,
-          ),
-        ],
-        border: Border.all(
-          color: AppTheme.copperLight,
-          width: 3,
         ),
       ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Inner ring
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white.withOpacity(0.4),
-                width: 2,
-              ),
-            ),
+    );
+  }
+
+  Widget _buildLogo() {
+    return Container(
+      width: 140,
+      height: 140,
+      decoration: BoxDecoration(
+        color: AppTheme.surface,
+        shape: BoxShape.circle,
+        boxShadow: AppTheme.cardShadow,
+      ),
+      child: ClipOval(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Image.asset(
+            'assets/textures/logo bydgoszcz.png',
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) {
+              // Fallback to houses if logo not found
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildHouse(AppTheme.warmRed, 24),
+                  const SizedBox(width: 4),
+                  _buildHouse(AppTheme.accentYellow, 32),
+                  const SizedBox(width: 4),
+                  _buildHouse(AppTheme.primaryBlue, 28),
+                ],
+              );
+            },
           ),
-          // Icon
-          Icon(
-            Icons.explore_outlined,
-            color: Colors.white,
-            size: 48,
-            shadows: [
-              Shadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 8,
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
+
+  Widget _buildHouse(Color color, double height) {
+    return CustomPaint(
+      size: Size(height * 0.8, height),
+      painter: _HousePainter(color),
+    );
+  }
+
+  void _navigateToMap() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+    );
+  }
+}
+
+class _HousePainter extends CustomPainter {
+  final Color color;
+
+  _HousePainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final path = Path();
+    // Roof
+    path.moveTo(size.width / 2, 0);
+    path.lineTo(0, size.height * 0.4);
+    path.lineTo(size.width, size.height * 0.4);
+    path.close();
+
+    // Body
+    path.addRect(Rect.fromLTWH(
+      size.width * 0.1,
+      size.height * 0.4,
+      size.width * 0.8,
+      size.height * 0.6,
+    ));
+
+    canvas.drawPath(path, paint);
+
+    // Window (cutout effect)
+    final windowPaint = Paint()
+      ..color = Colors.white.withOpacity(0.3)
+      ..style = PaintingStyle.fill;
+
+    canvas.drawRect(
+      Rect.fromCenter(
+        center: Offset(size.width / 2, size.height * 0.65),
+        width: size.width * 0.3,
+        height: size.height * 0.25,
+      ),
+      windowPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

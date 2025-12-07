@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../theme/tier_colors.dart';
 import '../data/monuments_data.dart';
 import '../models/monument.dart';
-import '../widgets/frosted_glass_panel.dart';
-import '../widgets/map_marker.dart';
+import '../services/monuments_service.dart';
+
 import 'discovery_card.dart';
 import 'profile_screen.dart';
 import 'collection_screen.dart';
 import 'quests_screen.dart';
 import 'ar_view_screen.dart';
 
-/// Screen 2: Main Map Screen - "The Canvas" HUB
-/// Interactive canvas of the city
+/// Screen 2: Main Map Screen - Clean modern design
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
@@ -26,32 +26,19 @@ class _MapScreenState extends State<MapScreen> {
   final MapController _mapController = MapController();
   Monument? _selectedMonument;
   int _currentNavIndex = 0;
-  
+
   // Bydgoszcz center coordinates
   static const LatLng _bydgoszczCenter = LatLng(53.1235, 18.0084);
-  
+
   // Simulated user data
-  int _userXP = 350;
-  int _userLevel = 2;
-  List<String> _discoveredIds = ['luczniczka', 'most_staromiejski'];
-  
+  final List<String> _discoveredIds = ['luczniczka', 'most_staromiejski'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.background,
       body: Stack(
         children: [
-          // Background texture
-          Container(
-            decoration: BoxDecoration(
-              color: AppTheme.porcelainWhite,
-              image: const DecorationImage(
-                image: AssetImage('assets/textures/wooden-floor-background.jpg'),
-                fit: BoxFit.cover,
-                opacity: 0.2,
-              ),
-            ),
-          ),
-          
           // Map
           FlutterMap(
             mapController: _mapController,
@@ -65,73 +52,41 @@ class _MapScreenState extends State<MapScreen> {
               },
             ),
             children: [
-              // OpenStreetMap tiles (light style)
+              // OpenStreetMap tiles
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'pl.bydgoszcz.sciezki_pamieci',
-                tileBuilder: (context, child, tile) {
-                  // Apply slight color filter for "paper" effect
-                  return ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      AppTheme.porcelainWhite.withOpacity(0.1),
-                      BlendMode.srcOver,
-                    ),
-                    child: child,
+              ),
+
+              // Firestore Monument markers
+              StreamBuilder<List<Monument>>(
+                stream: MonumentsService().getMonuments(),
+                builder: (context, snapshot) {
+                  final monuments = snapshot.data ?? MonumentsData.monuments;
+
+                  return MarkerLayer(
+                    markers: monuments.map((monument) {
+                      return Marker(
+                        point: monument.location,
+                        width: 44,
+                        height: 54,
+                        child: _buildMarker(monument),
+                      );
+                    }).toList(),
                   );
                 },
               ),
-              
-              // River overlay (simulated watercolor effect)
-              PolylineLayer(
-                polylines: [
-                  Polyline(
-                    points: [
-                      LatLng(53.1180, 18.0040),
-                      LatLng(53.1220, 18.0060),
-                      LatLng(53.1240, 18.0080),
-                      LatLng(53.1260, 18.0110),
-                      LatLng(53.1280, 18.0140),
-                    ],
-                    color: AppTheme.riverBlue.withOpacity(0.4),
-                    strokeWidth: 30,
-                  ),
-                ],
-              ),
-              
-              // Monument markers
-              MarkerLayer(
-                markers: MonumentsData.monuments.map((monument) {
-                  return Marker(
-                    point: monument.location,
-                    width: 50,
-                    height: 65,
-                    child: TierMapMarker(
-                      tier: monument.tier,
-                      isSelected: _selectedMonument?.id == monument.id,
-                      onTap: () => _onMarkerTapped(monument),
-                    ),
-                  );
-                }).toList(),
-              ),
             ],
           ),
-          
-          // Top bar (Frosted glass with profile and XP)
+
+          // Search bar
           Positioned(
             top: 0,
             left: 0,
             right: 0,
-            child: _buildTopBar(),
+            child: _buildSearchBar(),
           ),
-          
-          // Bottom radar panel
-          Positioned(
-            bottom: 100,
-            left: 16,
-            right: 16,
-            child: _buildRadarPanel(),
-          ),
-          
+
           // Bottom navigation
           Positioned(
             bottom: 0,
@@ -141,93 +96,54 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ],
       ),
-      floatingActionButton: _buildFAB(),
+      floatingActionButton: _buildScanFAB(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-  
-  Widget _buildTopBar() {
-    return SafeArea(
-      child: FrostedGlassPanel(
-        margin: const EdgeInsets.all(16),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        borderRadius: BorderRadius.circular(20),
-        child: Row(
+
+  Widget _buildMarker(Monument monument) {
+    final isSelected = _selectedMonument?.id == monument.id;
+
+    return GestureDetector(
+      onTap: () => _onMarkerTapped(monument),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            // Profile avatar
-            GestureDetector(
-              onTap: () => _navigateToScreen(3),
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: AppTheme.copperGradient,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: const Icon(
-                  Icons.person_outline,
-                  color: Colors.white,
-                  size: 24,
-                ),
-              ),
-            ),
-            
-            const SizedBox(width: 12),
-            
-            // Level and XP
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Poziom $_userLevel',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: LinearProgressIndicator(
-                      value: (_userXP % 500) / 500,
-                      backgroundColor: AppTheme.textMuted.withOpacity(0.2),
-                      valueColor: const AlwaysStoppedAnimation(AppTheme.oxidizedCopper),
-                      minHeight: 6,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
-            const SizedBox(width: 12),
-            
-            // XP count
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              width: isSelected ? 40 : 36,
+              height: isSelected ? 40 : 36,
               decoration: BoxDecoration(
-                color: AppTheme.oxidizedCopper.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.star,
-                    color: AppTheme.oxidizedCopper,
-                    size: 18,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    '$_userXP XP',
-                    style: const TextStyle(
-                      color: AppTheme.oxidizedCopper,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
+                color: monument.tier.color,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 3,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: monument.tier.color.withOpacity(0.3),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
                   ),
                 ],
+              ),
+              child: Icon(
+                Icons.location_on,
+                color: Colors.white,
+                size: isSelected ? 22 : 18,
+              ),
+            ),
+            // Pin tail
+            Container(
+              width: 3,
+              height: 8,
+              decoration: BoxDecoration(
+                color: monument.tier.color,
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(2),
+                ),
               ),
             ),
           ],
@@ -235,90 +151,94 @@ class _MapScreenState extends State<MapScreen> {
       ),
     );
   }
-  
-  Widget _buildRadarPanel() {
-    // Find nearby monuments
-    final nearby = MonumentsData.getNearby(_bydgoszczCenter, 500);
-    final undiscovered = nearby.where((m) => !_discoveredIds.contains(m.id)).length;
-    
-    return FrostedGlassPanel(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: AppTheme.oxidizedCopper.withOpacity(0.15),
-              shape: BoxShape.circle,
+
+  Widget _buildSearchBar() {
+    return SafeArea(
+      child: Container(
+        margin: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppTheme.background,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: AppTheme.subtleShadow,
+        ),
+        child: Row(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Icon(
+                Icons.search,
+                color: AppTheme.textMuted,
+                size: 22,
+              ),
             ),
-            child: const Icon(
-              Icons.radar,
-              color: AppTheme.oxidizedCopper,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'W pobliżu',
-                  style: TextStyle(
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Szukaj miejsc...',
+                  hintStyle: GoogleFonts.inter(
                     color: AppTheme.textMuted,
-                    fontSize: 12,
-                  ),
-                ),
-                Text(
-                  '${nearby.length} obiektów do odkrycia',
-                  style: const TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 14,
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-          if (undiscovered > 0)
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              margin: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppTheme.oldGold,
+                color: AppTheme.primaryBlue,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(
-                '$undiscovered nowych',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
+              child: const Icon(
+                Icons.tune,
+                color: Colors.white,
+                size: 18,
               ),
             ),
-        ],
+          ],
+        ),
       ),
     );
   }
-  
+
   Widget _buildBottomNav() {
-    return FrostedGlassPanel(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-      padding: const EdgeInsets.only(top: 8, bottom: 24, left: 16, right: 16),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.background,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      padding: EdgeInsets.only(
+        top: 8,
+        bottom: MediaQuery.of(context).padding.bottom + 8,
+        left: 24,
+        right: 24,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _navItem(0, Icons.map_outlined, Icons.map, 'Mapa'),
-          _navItem(1, Icons.collections_bookmark_outlined, Icons.collections_bookmark, 'Album'),
-          const SizedBox(width: 60), // Space for FAB
-          _navItem(2, Icons.emoji_events_outlined, Icons.emoji_events, 'Wyzwania'),
+          _navItem(1, Icons.collections_bookmark_outlined,
+              Icons.collections_bookmark, 'Album'),
+          const SizedBox(width: 56), // Space for FAB
+          _navItem(
+              2, Icons.emoji_events_outlined, Icons.emoji_events, 'Wyzwania'),
           _navItem(3, Icons.person_outline, Icons.person, 'Profil'),
         ],
       ),
     );
   }
-  
+
   Widget _navItem(int index, IconData icon, IconData activeIcon, String label) {
     final isActive = _currentNavIndex == index;
     return GestureDetector(
@@ -328,70 +248,55 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           Icon(
             isActive ? activeIcon : icon,
-            color: isActive ? AppTheme.oxidizedCopper : AppTheme.textMuted,
-            size: 26,
+            color: isActive ? AppTheme.primaryBlue : AppTheme.textMuted,
+            size: 24,
           ),
           const SizedBox(height: 4),
           Text(
             label,
-            style: TextStyle(
-              color: isActive ? AppTheme.oxidizedCopper : AppTheme.textMuted,
+            style: GoogleFonts.inter(
+              color: isActive ? AppTheme.primaryBlue : AppTheme.textMuted,
               fontSize: 11,
-              fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
             ),
           ),
         ],
       ),
     );
   }
-  
-  Widget _buildFAB() {
+
+  Widget _buildScanFAB() {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50),
-      child: Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: AppTheme.copperGradient,
-          boxShadow: [
-            BoxShadow(
-              color: AppTheme.oxidizedCopper.withOpacity(0.4),
-              blurRadius: 16,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: _openARView,
-            customBorder: const CircleBorder(),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.qr_code_scanner, color: Colors.white, size: 26),
-                Text(
-                  'SKANUJ',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 9,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ],
-            ),
+      padding: const EdgeInsets.only(bottom: 56),
+      child: GestureDetector(
+        onTap: _openARView,
+        child: Container(
+          width: 56,
+          height: 56,
+          decoration: BoxDecoration(
+            gradient: AppTheme.primaryGradient,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: AppTheme.primaryBlue.withOpacity(0.3),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: const Icon(
+            Icons.qr_code_scanner,
+            color: Colors.white,
+            size: 26,
           ),
         ),
       ),
     );
   }
-  
+
   void _onMarkerTapped(Monument monument) {
     setState(() => _selectedMonument = monument);
-    
-    // Show Discovery Card bottom sheet
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -403,19 +308,18 @@ class _MapScreenState extends State<MapScreen> {
           setState(() {
             if (!_discoveredIds.contains(monument.id)) {
               _discoveredIds.add(monument.id);
-              _userXP += 100;
             }
           });
         },
       ),
     );
   }
-  
+
   void _navigateToScreen(int index) {
     if (index == _currentNavIndex && index == 0) return;
-    
+
     setState(() => _currentNavIndex = index);
-    
+
     Widget? screen;
     switch (index) {
       case 1:
@@ -425,23 +329,21 @@ class _MapScreenState extends State<MapScreen> {
         screen = QuestsScreen(discoveredIds: _discoveredIds);
         break;
       case 3:
-        screen = ProfileScreen(
-          discoveredCount: _discoveredIds.length,
-          xp: _userXP,
-          level: _userLevel,
-        );
+        screen = const ProfileScreen();
         break;
     }
-    
+
     if (screen != null) {
-      Navigator.of(context).push(
+      Navigator.of(context)
+          .push(
         MaterialPageRoute(builder: (_) => screen!),
-      ).then((_) {
+      )
+          .then((_) {
         setState(() => _currentNavIndex = 0);
       });
     }
   }
-  
+
   void _openARView() {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => const ARViewScreen()),

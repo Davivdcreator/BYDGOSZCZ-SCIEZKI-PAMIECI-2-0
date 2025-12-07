@@ -1,58 +1,43 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import '../theme/app_theme.dart';
 
-/// Frosted Glass Panel widget - main UI element for "Modern Heritage" design
+/// Frosted Glass Panel - Clean modern glass effect
 class FrostedGlassPanel extends StatelessWidget {
   final Widget child;
-  final double blur;
-  final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
   final BorderRadius? borderRadius;
-  final double? width;
-  final double? height;
   final Color? backgroundColor;
-  final Border? border;
-  
+  final double blur;
+
   const FrostedGlassPanel({
     super.key,
     required this.child,
-    this.blur = 10,
     this.padding,
     this.margin,
     this.borderRadius,
-    this.width,
-    this.height,
     this.backgroundColor,
-    this.border,
+    this.blur = 20,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
       margin: margin,
       child: ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(16),
+        borderRadius: borderRadius ?? BorderRadius.circular(20),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: Container(
             padding: padding ?? const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: backgroundColor ?? AppTheme.frostedGlass,
-              borderRadius: borderRadius ?? BorderRadius.circular(16),
-              border: border ?? Border.all(
-                color: AppTheme.frostedGlassBorder,
+              color: backgroundColor ?? AppTheme.glassWhite,
+              borderRadius: borderRadius ?? BorderRadius.circular(20),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.5),
                 width: 1,
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 20,
-                  offset: const Offset(0, 4),
-                ),
-              ],
             ),
             child: child,
           ),
@@ -62,69 +47,67 @@ class FrostedGlassPanel extends StatelessWidget {
   }
 }
 
-/// Frosted Glass App Bar
-class FrostedGlassAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String? title;
-  final Widget? leading;
+/// Clean glass app bar
+class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
   final List<Widget>? actions;
-  final Widget? bottom;
-  final double height;
-  
-  const FrostedGlassAppBar({
+  final Widget? leading;
+  final bool centerTitle;
+
+  const GlassAppBar({
     super.key,
-    this.title,
-    this.leading,
+    required this.title,
     this.actions,
-    this.bottom,
-    this.height = 60,
+    this.leading,
+    this.centerTitle = true,
   });
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(
-          height: height + MediaQuery.of(context).padding.top,
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          decoration: BoxDecoration(
-            color: AppTheme.frostedGlass,
+          decoration: const BoxDecoration(
+            color: AppTheme.glassWhite,
             border: Border(
               bottom: BorderSide(
-                color: AppTheme.frostedGlassBorder,
+                color: AppTheme.surfaceSecondary,
                 width: 1,
               ),
             ),
           ),
-          child: Column(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    if (leading != null) leading!
-                    else const SizedBox(width: 16),
-                    Expanded(
-                      child: title != null
-                          ? Text(
-                              title!,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                              textAlign: TextAlign.center,
-                            )
-                          : const SizedBox(),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  if (leading != null)
+                    leading!
+                  else
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+                      color: AppTheme.textPrimary,
                     ),
-                    if (actions != null) ...actions!
-                    else const SizedBox(width: 16),
-                  ],
-                ),
+                  if (centerTitle) const Spacer(),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  if (centerTitle) const Spacer(),
+                  if (actions != null) ...actions!,
+                ],
               ),
-              if (bottom != null) bottom!,
-            ],
+            ),
           ),
         ),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(height);
 }

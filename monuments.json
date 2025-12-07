@@ -1,0 +1,996 @@
+[
+  {
+    "id": "luczniczka",
+    "name": "\u0141uczniczka",
+    "description": "Jeden z najbardziej rozpoznawalnych symboli Bydgoszczy. Rze\u017aba Ferdinanda Lepckego z 1910 roku, przedstawiaj\u0105ca nag\u0105 kobiet\u0119 napinaj\u0105c\u0105 \u0142uk. Przez lata budzi\u0142a kontrowersje, dzi\u015b jest ikon\u0105 miasta.",
+    "shortDescription": "Symbol miasta nad Brd\u0105",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Luczniczka_Bydgoszcz_2.jpg/800px-Luczniczka_Bydgoszcz_2.jpg",
+    "architect": "Ferdinand Lepcke",
+    "style": "Realizm / Neoklasycyzm",
+    "aiPersonality": "Dostojna, poetycka, nieco tajemnicza. M\u00f3wi o d\u0105\u017ceniu do celu i pi\u0119knie.",
+    "tier": "tierS",
+    "latitude": 53.1218,
+    "longitude": 18.0065,
+    "year": 1910,
+    "tags": [
+      "Rze\u017aba",
+      "Symbol",
+      "Park"
+    ]
+  },
+  {
+    "id": "przechodzacy_przez_rzeke",
+    "name": "Przechodz\u0105cy przez rzek\u0119",
+    "description": "Rze\u017aba balansuj\u0105ca na linie nad rzek\u0105 Brd\u0105. Upami\u0119tnia wej\u015bcie Polski do Unii Europejskiej. Zosta\u0142a ods\u0142oni\u0119ta 1 maja 2004 roku.",
+    "shortDescription": "Balansuj\u0105cy nad Brd\u0105",
+    "imageUrl": "https://visitbydgoszcz.pl/images/zimb/przechodzacy%20przez%20rzeke.jpg",
+    "architect": "Jerzy K\u0119dziora",
+    "style": "Nowoczesny / Balansuj\u0105cy",
+    "aiPersonality": "Spokojny, skupiony na r\u00f3wnowadze. Filozofuje o \u017cyciu \"pomi\u0119dzy\" brzegami.",
+    "tier": "tierS",
+    "latitude": 53.123,
+    "longitude": 18.003,
+    "year": 2004,
+    "tags": [
+      "Rze\u017aba",
+      "Rzeka",
+      "Wsp\u00f3\u0142czesna"
+    ]
+  },
+  {
+    "id": "kazimierz_wielki",
+    "name": "Pomnik Kazimierza Wielkiego",
+    "description": "Pomnik kr\u00f3la, kt\u00f3ry nada\u0142 Bydgoszczy prawa miejskie w 1346 roku. Przedstawia monarch\u0119 na koniu, trzymaj\u0105cego akt lokacyjny.",
+    "shortDescription": "Kr\u00f3l na koniu",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Pomnik_Kazimierza_Wielkiego_w_Bydgoszczy.jpg",
+    "architect": "Mariusz Bia\u0142ecki",
+    "style": "Monumentalny",
+    "aiPersonality": "W\u0142adczy, dymny, ale ojcowski. Opowiada o historii Polski i budowaniu miasta.",
+    "tier": "tierA",
+    "latitude": 53.121,
+    "longitude": 17.998,
+    "year": 2006,
+    "tags": [
+      "Kr\u00f3l",
+      "Historia",
+      "Ko\u0144"
+    ]
+  },
+  {
+    "id": "fontanna_potop",
+    "name": "Fontanna Potop",
+    "description": "Zrekonstruowana monumentalna fontanna w Parku Kazimierza Wielkiego. Przedstawia biblijny potop i walk\u0119 ludzi oraz zwierz\u0105t o przetrwanie.",
+    "shortDescription": "Biblijna scena w parku",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Fontanna_Potop_Bydgoszcz_2014.jpg/1200px-Fontanna_Potop_Bydgoszcz_2014.jpg",
+    "architect": "Ferdinand Lepcke",
+    "style": "Secesja",
+    "aiPersonality": "Dramatyczna, emocjonalna, wielog\u0142osowa. Opowiada o \u017cywiole wody i walce o \u017cycie.",
+    "tier": "tierA",
+    "latitude": 53.1265,
+    "longitude": 18.006,
+    "year": 1904,
+    "tags": [
+      "Fontanna",
+      "Park",
+      "Biblia"
+    ]
+  },
+  {
+    "id": "spichrze",
+    "name": "Spichrze nad Brd\u0105",
+    "description": "Zabytkowe spichlerze zbo\u017cowe, b\u0119d\u0105ce symbolem handlowej historii Bydgoszczy. Dzi\u015b siedziba Muzeum Okr\u0119gowego.",
+    "shortDescription": "Symbol handlowej Bydgoszczy",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Spichrze_w_Bydgoszczy.jpg",
+    "style": "Szachulec",
+    "aiPersonality": "Stare, m\u0105dre, pachn\u0105ce drewnem i zbo\u017cem. Pami\u0119taj\u0105 czasy handlu rzecznego.",
+    "tier": "tierB",
+    "latitude": 53.1225,
+    "longitude": 18.0015,
+    "year": 1793,
+    "tags": [
+      "Architektura",
+      "Muzeum",
+      "Rzeka"
+    ]
+  },
+  {
+    "id": "most_staromiejski",
+    "name": "Most Staromiejski",
+    "description": "Most \u0142\u0105cz\u0105cy Stare Miasto z centrum. Idealne miejsce do podziwiania rzeki i Przechodz\u0105cego przez rzek\u0119.",
+    "shortDescription": "Widok na Brd\u0119",
+    "imageUrl": "https://bydgoszcz.pl/fileadmin/_processed_/5/6/csm_most_staromiejski_01_a62e0325d9.jpg",
+    "aiPersonality": "Faktograficzny, precyzyjny. Zna parametry rzeki i histori\u0119 przepraw.",
+    "tier": "tierC",
+    "latitude": 53.1232,
+    "longitude": 18.0025,
+    "tags": [
+      "Most",
+      "Widok",
+      "Brda"
+    ]
+  },
+  {
+    "id": "rzezba_luczniczki",
+    "name": "Rze\u017aba \u0141uczniczki",
+    "description": "Rze\u017aba \u0141uczniczki",
+    "shortDescription": "Park im. Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15782/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "mistrz_twardowski",
+    "name": "Mistrz Twardowski",
+    "description": "Mistrz Twardowski",
+    "shortDescription": "Stary Rynek 15, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/66/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "wioslarz_na_mecie",
+    "name": "Wio\u015blarz \"Na mecie\"",
+    "description": "Wio\u015blarz \"Na mecie\"",
+    "shortDescription": ", Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/38629/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "oko",
+    "name": "Oko",
+    "description": "Oko",
+    "shortDescription": ", Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/38630/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "wikliniarka",
+    "name": "Wikliniarka",
+    "description": "Wikliniarka",
+    "shortDescription": ", Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/38628/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "zegar_z_czasem_bydgoskim",
+    "name": "Zegar z czasem bydgoskim",
+    "description": "Zegar z czasem bydgoskim",
+    "shortDescription": "ul. Stary Rynek 1, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/19545/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_kopernika",
+    "name": "Pomnik Kopernika",
+    "description": "Pomnik Kopernika",
+    "shortDescription": "skwer przy ul. Kopernika, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15791/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "laweczka_mariana_rejewskiego",
+    "name": "\u0141aweczka Mariana Rejewskiego",
+    "description": "\u0141aweczka Mariana Rejewskiego",
+    "shortDescription": "plac u zbiegu ulic: Gda\u0144skiej i \u015aniadeckich, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/119/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_sw_jana_nepomucena",
+    "name": "Pomnik \u015bw. Jana Nepomucena",
+    "description": "Pomnik \u015bw. Jana Nepomucena",
+    "shortDescription": "Farna 8, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15800/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "rzezba_flisaka",
+    "name": "Rze\u017aba Flisaka",
+    "description": "Rze\u017aba Flisaka",
+    "shortDescription": "ul. Mostowa, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15793/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_szwalbego",
+    "name": "Pomnik Szwalbego",
+    "description": "Pomnik Szwalbego",
+    "shortDescription": "ul. Andrzeja Szwalbego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15802/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_leona_barciszewskiego",
+    "name": "Pomnik Leona Barciszewskiego",
+    "description": "Pomnik Leona Barciszewskiego",
+    "shortDescription": "We\u0142niany Rynek, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15803/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_marii_konopnickiej",
+    "name": "Pomnik Marii Konopnickiej",
+    "description": "Pomnik Marii Konopnickiej",
+    "shortDescription": "Marii Konopnickiej 26, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/473/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "tanczace_fontanny",
+    "name": "Ta\u0144cz\u0105ce Fontanny",
+    "description": "Ta\u0144cz\u0105ce Fontanny",
+    "shortDescription": "skwer Krzysztofa Komedy, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/505/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "cztery_pory_roku",
+    "name": "Cztery Pory Roku",
+    "description": "Cztery Pory Roku",
+    "shortDescription": "aleja Powsta\u0144c\u00f3w Wielkopolskich, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1213/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "wielkie_krzesla_na_wyspie_mlynskiej",
+    "name": "Wielkie Krzes\u0142a na Wyspie M\u0142y\u0144skiej",
+    "description": "Wielkie Krzes\u0142a na Wyspie M\u0142y\u0144skiej",
+    "shortDescription": "Mennica 7, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1459/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "brama_z_luster",
+    "name": "Brama z luster",
+    "description": "Brama z luster",
+    "shortDescription": "Mazowiecka 5, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/441/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "bydgoskie_autografy",
+    "name": "Bydgoskie Autografy",
+    "description": "Bydgoskie Autografy",
+    "shortDescription": "ul. D\u0142uga, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/134/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_wiosel",
+    "name": "Pomnik Wiose\u0142",
+    "description": "Pomnik Wiose\u0142",
+    "shortDescription": "Biwakowa 162, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/123/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "luczniczka_nova",
+    "name": "\u0141uczniczka Nova",
+    "description": "\u0141uczniczka Nova",
+    "shortDescription": "plac przed Oper\u0105 Nova, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/132/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "18_poludnik",
+    "name": "18. Po\u0142udnik",
+    "description": "18. Po\u0142udnik",
+    "shortDescription": "Wyspa M\u0142y\u0144ska, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/122/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "spodnie_andrzeja",
+    "name": "Spodnie Andrzeja",
+    "description": "Spodnie Andrzeja",
+    "shortDescription": "Plac Wolno\u015bci 3, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15792/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_tysiaclecia_panstwa_polskiego",
+    "name": "Pomnik Tysi\u0105clecia Pa\u0144stwa Polskiego",
+    "description": "Pomnik Tysi\u0105clecia Pa\u0144stwa Polskiego",
+    "shortDescription": "skwer Leszka Bia\u0142ego u zbiegu ul. Staszica i Markwarta, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/116/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "apel_wiezniarek",
+    "name": "Apel Wi\u0119\u017aniarek",
+    "description": "Apel Wi\u0119\u017aniarek",
+    "shortDescription": "ul. Farna, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15790/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_walki_i_meczenstwa",
+    "name": "Pomnik Walki i M\u0119cze\u0144stwa",
+    "description": "Pomnik Walki i M\u0119cze\u0144stwa",
+    "shortDescription": "Stary Rynek, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/125/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_nieznanego_powstanca_wielkopolskiego",
+    "name": "Pomnik Nieznanego Powsta\u0144ca Wielkopolskiego",
+    "description": "Pomnik Nieznanego Powsta\u0144ca Wielkopolskiego",
+    "shortDescription": "Skwer przy ul. Bernardy\u0144skiej, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/126/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "runda_i",
+    "name": "Runda I",
+    "description": "Runda I",
+    "shortDescription": "na dziedzi\u0144cu Galerii Miejskiej bwa, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/115/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "fontanna_studzienka",
+    "name": "Fontanna Studzienka",
+    "description": "Fontanna Studzienka",
+    "shortDescription": "Stary Rynek, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/19163/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "trzy_gracje",
+    "name": "Trzy Gracje",
+    "description": "Trzy Gracje",
+    "shortDescription": "Stary Port, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15795/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "przebudzenie_elfow",
+    "name": "Przebudzenie Elf\u00f3w",
+    "description": "Przebudzenie Elf\u00f3w",
+    "shortDescription": "Al. Mickiewicza, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1211/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_wincentego_witosa",
+    "name": "Pomnik Wincentego Witosa",
+    "description": "Pomnik Wincentego Witosa",
+    "shortDescription": "Park im. Wincentego Witosa, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1481/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_poleglych_stary_fordon",
+    "name": "Pomnik Poleg\u0142ych (Stary Fordon)",
+    "description": "Pomnik Poleg\u0142ych (Stary Fordon)",
+    "shortDescription": "Rynek, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/34172/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_henryka_sienkiewicza",
+    "name": "Pomnik Henryka Sienkiewicza",
+    "description": "Pomnik Henryka Sienkiewicza",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1518/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_ignacego_jana_paderewskiego",
+    "name": "Pomnik Ignacego Jana Paderewskiego",
+    "description": "Pomnik Ignacego Jana Paderewskiego",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1517/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_fryderyka_chopina",
+    "name": "Pomnik Fryderyka Chopina",
+    "description": "Pomnik Fryderyka Chopina",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1516/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_jana_sebastiana_bacha",
+    "name": "Pomnik Jana Sebastiana Bacha",
+    "description": "Pomnik Jana Sebastiana Bacha",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1491/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_claudea_debussy",
+    "name": "Pomnik Claude'a Debussy",
+    "description": "Pomnik Claude'a Debussy",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1490/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_ludomira_rozyckiego",
+    "name": "Pomnik Ludomira R\u00f3\u017cyckiego",
+    "description": "Pomnik Ludomira R\u00f3\u017cyckiego",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1489/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_stanislawa_moniuszki",
+    "name": "Pomnik Stanis\u0142awa Moniuszki",
+    "description": "Pomnik Stanis\u0142awa Moniuszki",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1488/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_mieczyslawa_karlowicza",
+    "name": "Pomnik Mieczys\u0142awa Kar\u0142owicza",
+    "description": "Pomnik Mieczys\u0142awa Kar\u0142owicza",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1487/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_antonina_dvoraka",
+    "name": "Pomnik Antonina Dvoraka",
+    "description": "Pomnik Antonina Dvoraka",
+    "shortDescription": "Park Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1484/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_karola_kurpinskiego",
+    "name": "Pomnik Karola Kurpi\u0144skiego",
+    "description": "Pomnik Karola Kurpi\u0144skiego",
+    "shortDescription": "Park Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1483/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "zaraz_zagramy",
+    "name": "Zaraz Zagramy",
+    "description": "Zaraz Zagramy",
+    "shortDescription": "S\u0142owackiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1212/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "obelisk_gen_henryka_dabrowskiego",
+    "name": "Obelisk gen. Henryka D\u0105browskiego",
+    "description": "Obelisk gen. Henryka D\u0105browskiego",
+    "shortDescription": "Filarecka, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1477/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "igor_strawinski",
+    "name": "Igor Strawinski",
+    "description": "Igor Strawinski",
+    "shortDescription": "Park im. Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1388/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "grazyna_bacewicz",
+    "name": "Gra\u017cyna Bacewicz",
+    "description": "Gra\u017cyna Bacewicz",
+    "shortDescription": "Park im. Jana Kochanowskiego, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1390/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "polery_na_nabrzezu_urbanyiego",
+    "name": "Polery na nabrze\u017cu Urbanyiego",
+    "description": "Polery na nabrze\u017cu Urbanyiego",
+    "shortDescription": "okolice Mostowej przy Brdzie, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/135/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "obelisk_na_placu_wolnosci",
+    "name": "Obelisk na Placu Wolno\u015bci",
+    "description": "Obelisk na Placu Wolno\u015bci",
+    "shortDescription": "Plac Wolno\u015bci, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15797/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "kamien_upamietniajacy_bydgoskich_zydow",
+    "name": "Kamie\u0144 upami\u0119tniaj\u0105cy bydgoskich \u017byd\u00f3w",
+    "description": "Kamie\u0144 upami\u0119tniaj\u0105cy bydgoskich \u017byd\u00f3w",
+    "shortDescription": "Jana Kazimierza, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/1554/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_wedrowca",
+    "name": "Pomnik W\u0119drowca",
+    "description": "Pomnik W\u0119drowca",
+    "shortDescription": "Gda\u0144ska / Pomorska, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/15798/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "pomnik_krasnoludkow",
+    "name": "Pomnik krasnoludk\u00f3w",
+    "description": "Pomnik krasnoludk\u00f3w",
+    "shortDescription": "Konopnickiej, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/472/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  },
+  {
+    "id": "makieta_dawnej_bydgoszczy",
+    "name": "Makieta dawnej Bydgoszczy",
+    "description": "Makieta dawnej Bydgoszczy",
+    "shortDescription": "ul. Mostowa, Bydgoszcz",
+    "imageUrl": "https://visitbydgoszcz.pl/images/com_adsmanager/ads/media/photos/198/xl.jpg",
+    "location": {
+      "latitude": 53.1235,
+      "longitude": 18.0084
+    },
+    "tier": "tierB",
+    "aiPersonality": "Jestem nowym miejscem na mapie Bydgoszczy.",
+    "tags": [
+      "Imported"
+    ],
+    "dataSource": "excel"
+  }
+]

@@ -7,7 +7,7 @@ class TierMapMarker extends StatelessWidget {
   final MonumentTier tier;
   final bool isSelected;
   final VoidCallback? onTap;
-  
+
   const TierMapMarker({
     super.key,
     required this.tier,
@@ -19,7 +19,7 @@ class TierMapMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = tier.color;
     final size = isSelected ? 50.0 : 40.0;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
@@ -35,11 +35,12 @@ class TierMapMarker extends StatelessWidget {
               height: size,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                gradient: tier.gradient ?? LinearGradient(
-                  colors: [color.withOpacity(0.8), color],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
+                gradient: tier.gradient ??
+                    LinearGradient(
+                      colors: [color.withOpacity(0.8), color],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                 border: Border.all(
                   color: Colors.white,
                   width: 3,
@@ -96,7 +97,7 @@ class TierBadge extends StatelessWidget {
   final MonumentTier tier;
   final bool showLabel;
   final double size;
-  
+
   const TierBadge({
     super.key,
     required this.tier,
@@ -114,11 +115,12 @@ class TierBadge extends StatelessWidget {
           height: size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: tier.gradient ?? LinearGradient(
-              colors: [tier.color.withOpacity(0.8), tier.color],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            gradient: tier.gradient ??
+                LinearGradient(
+                  colors: [tier.color.withOpacity(0.8), tier.color],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
             boxShadow: [
               BoxShadow(
                 color: tier.color.withOpacity(0.3),
@@ -153,8 +155,8 @@ class TierBadge extends StatelessWidget {
                 ),
               ),
               Text(
-                tier.englishName,
-                style: TextStyle(
+                tier.objectType,
+                style: const TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
                 ),

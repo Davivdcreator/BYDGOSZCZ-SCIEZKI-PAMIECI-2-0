@@ -1,0 +1,36 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "sciezki-pamieci-app",
+          "appId": "1:35606195802:android:c427bd4a5327df59ecb263",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "sciezki-pamieci-app",
+          "appId": "1:35606195802:ios:83b45e36a3777b14ecb263",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "sciezki-pamieci-app",
+          "configurations": {
+            "android": "1:35606195802:android:c427bd4a5327df59ecb263",
+            "ios": "1:35606195802:ios:83b45e36a3777b14ecb263"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "europe-central2",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

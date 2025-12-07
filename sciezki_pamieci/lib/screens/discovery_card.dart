@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
+import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
+import '../theme/tier_colors.dart';
 import '../models/monument.dart';
-import '../widgets/frosted_glass_panel.dart';
 import '../widgets/copper_button.dart';
-import '../widgets/map_marker.dart';
 import 'chat_screen.dart';
 
-/// Screen 4: Discovery Card - Bottom Sheet for POI details
-/// Gateway to knowledge (before conversation)
+/// Screen 4: Discovery Card - Minimalist location widget
+/// Inspired by modern app design with clean spacing
 class DiscoveryCard extends StatelessWidget {
   final Monument monument;
   final bool isDiscovered;
   final VoidCallback? onDiscover;
-  
+
   const DiscoveryCard({
     super.key,
     required this.monument,
@@ -23,240 +22,226 @@ class DiscoveryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    
-    return Container(
-      height: screenHeight * 0.75,
-      decoration: BoxDecoration(
-        color: AppTheme.porcelainWhite,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-        image: const DecorationImage(
-          image: AssetImage('assets/textures/wooden-floor-background.jpg'),
-          fit: BoxFit.cover,
-          opacity: 0.15,
-        ),
-      ),
-      child: Column(
-        children: [
-          // Handle bar
-          Container(
-            margin: const EdgeInsets.only(top: 12),
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: AppTheme.textMuted.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(2),
-            ),
+    return DraggableScrollableSheet(
+      initialChildSize: 0.55,
+      minChildSize: 0.3,
+      maxChildSize: 0.85,
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+            color: AppTheme.background,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 20,
+                offset: const Offset(0, -5),
+              ),
+            ],
           ),
-          
-          // Image section
-          Expanded(
-            flex: 4,
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.15),
-                    blurRadius: 20,
-                    offset: const Offset(0, 8),
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Handle bar
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 12),
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: AppTheme.surfaceSecondary,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
                   ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    // Placeholder image with gradient
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            monument.tier.color.withOpacity(0.3),
-                            monument.tier.color.withOpacity(0.6),
-                          ],
-                        ),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.account_balance,
-                          size: 80,
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                      ),
-                    ),
-                    
-                    // Gradient overlay
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        height: 100,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.7),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    
-                    // Tier badge
-                    Positioned(
-                      top: 12,
-                      right: 12,
-                      child: TierBadge(
-                        tier: monument.tier,
-                        showLabel: false,
-                        size: 40,
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-            ),
-          ),
-          
-          // Content section
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Title and year
-                  Row(
+
+                // Image with heart
+                _buildImageSection(),
+
+                // Content
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Text(
-                          monument.name,
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      // Title
+                      Text(
+                        monument.name,
+                        style: GoogleFonts.inter(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
                         ),
                       ),
-                      if (monument.year != null)
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: monument.tier.color.withOpacity(0.15),
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: monument.tier.color.withOpacity(0.3),
-                            ),
-                          ),
-                          child: Text(
-                            '${monument.year}',
-                            style: TextStyle(
-                              color: monument.tier.color,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                          ),
+
+                      const SizedBox(height: 8),
+
+                      // Short description
+                      Text(
+                        monument.shortDescription,
+                        style: GoogleFonts.inter(
+                          fontSize: 15,
+                          color: AppTheme.textSecondary,
+                          height: 1.5,
                         ),
-                    ],
-                  ),
-                  
-                  const SizedBox(height: 16),
-                  
-                  // Tags (Hard Data)
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      if (monument.style != null)
-                        _buildTag(monument.style!, Icons.architecture),
-                      if (monument.architect != null)
-                        _buildTag(monument.architect!, Icons.person_outline),
-                      ...monument.tags.take(2).map((tag) => 
-                        _buildTag(tag, Icons.label_outline),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Metadata row
+                      _buildMetadataRow(),
+
+                      const SizedBox(height: 16),
+
+                      // Tags
+                      _buildTags(),
+
+                      const SizedBox(height: 24),
+
+                      // CTA Button
+                      SizedBox(
+                        width: double.infinity,
+                        child: GradientButton(
+                          text: 'Porozmawiaj',
+                          icon: Icons.chat_bubble_outline,
+                          isLarge: true,
+                          onPressed: () => _openChat(context),
+                        ),
                       ),
                     ],
                   ),
-                  
-                  const SizedBox(height: 16),
-                  
-                  // Short description
-                  Text(
-                    monument.shortDescription,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppTheme.textSecondary,
-                      height: 1.5,
-                    ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildImageSection() {
+    return Stack(
+      children: [
+        // Image placeholder
+        Container(
+          margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          height: 200,
+          decoration: BoxDecoration(
+            color: AppTheme.surface,
+            borderRadius: BorderRadius.circular(16),
+            image: DecorationImage(
+                    image: NetworkImage(monument.imageUrl),
+                    fit: BoxFit.cover,
                   ),
-                  
-                  const Spacer(),
-                  
-                  // Talk button
-                  Center(
-                    child: CopperButton(
-                      text: 'POROZMAWIAJ',
-                      icon: Icons.edit_note,
-                      isLarge: true,
-                      isPulsing: true,
-                      useGoldGradient: monument.tier == MonumentTier.tierS,
-                      onPressed: () {
-                        onDiscover?.call();
-                        Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ChatScreen(monument: monument),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 24),
-                ],
+          ),
+          child: null,
+        ),
+
+        // Tier badge
+        Positioned(
+          top: 28,
+          left: 28,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: monument.tier.color,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              monument.tier.displayName,
+              style: GoogleFonts.inter(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: monument.tier == MonumentTier.tierS
+                    ? AppTheme.textPrimary
+                    : Colors.white,
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildTag(String text, IconData icon) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: AppTheme.frostedGlass,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: AppTheme.textMuted.withOpacity(0.2),
         ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: AppTheme.textMuted),
-          const SizedBox(width: 6),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 12,
-              color: AppTheme.textSecondary,
-              fontWeight: FontWeight.w500,
+
+        // Heart button
+        Positioned(
+          top: 28,
+          right: 28,
+          child: Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.favorite_border,
+              color: Colors.white,
+              size: 18,
             ),
           ),
-        ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMetadataRow() {
+    return Row(
+      children: [
+        const Icon(
+          Icons.schedule,
+          size: 16,
+          color: AppTheme.textMuted,
+        ),
+        const SizedBox(width: 4),
+        Text(
+          '~15 min',
+          style: GoogleFonts.inter(
+            fontSize: 13,
+            color: AppTheme.textSecondary,
+          ),
+        ),
+        const SizedBox(width: 16),
+        const Icon(
+          Icons.location_on_outlined,
+          size: 16,
+          color: AppTheme.textMuted,
+        ),
+        const SizedBox(width: 4),
+        Expanded(
+          child: Text(
+            'Centrum Bydgoszczy',
+            style: GoogleFonts.inter(
+              fontSize: 13,
+              color: AppTheme.primaryBlue,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTags() {
+    final tags = monument.tags ?? ['Pomnik', 'Historia'];
+
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: tags
+          .map((tag) => PillTag(
+                text: tag,
+                color: AppTheme.primaryBlue,
+              ))
+          .toList(),
+    );
+  }
+
+  void _openChat(BuildContext context) {
+    onDiscover?.call();
+    Navigator.of(context).pop();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ChatScreen(monument: monument),
       ),
     );
   }

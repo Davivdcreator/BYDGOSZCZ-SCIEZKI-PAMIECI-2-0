@@ -4,15 +4,12 @@ import '../theme/app_theme.dart';
 import '../theme/tier_colors.dart';
 import '../data/monuments_data.dart';
 import '../models/monument.dart';
-import '../widgets/frosted_glass_panel.dart';
-import '../widgets/map_marker.dart';
 import 'chat_screen.dart';
 
-/// Screen 7: "Album Pamięci" - Collection Screen
-/// Archive of discoveries styled as a stamp collector album
+/// Screen 7: Collection - Clean grid design
 class CollectionScreen extends StatelessWidget {
   final List<String> discoveredIds;
-  
+
   const CollectionScreen({
     super.key,
     required this.discoveredIds,
@@ -20,64 +17,56 @@ class CollectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allMonuments = MonumentsData.monuments;
-    final discovered = allMonuments.where((m) => discoveredIds.contains(m.id)).toList();
-    final undiscovered = allMonuments.where((m) => !discoveredIds.contains(m.id)).toList();
-    
+    const allMonuments = MonumentsData.monuments;
+    final discovered =
+        allMonuments.where((m) => discoveredIds.contains(m.id)).toList();
+    final undiscovered =
+        allMonuments.where((m) => !discoveredIds.contains(m.id)).toList();
+
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.porcelainWhite,
-          image: const DecorationImage(
-            image: AssetImage('assets/textures/wooden-floor-background.jpg'),
-            fit: BoxFit.cover,
-            opacity: 0.3,
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              // App bar
-              _buildAppBar(context, discovered.length, allMonuments.length),
-              
-              // Collection grid
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (discovered.isNotEmpty) ...[
-                        _buildSectionHeader('Odkryte miejsca', discovered.length),
-                        const SizedBox(height: 12),
-                        _buildGrid(context, discovered, true),
-                        const SizedBox(height: 24),
-                      ],
-                      
-                      if (undiscovered.isNotEmpty) ...[
-                        _buildSectionHeader('Do odkrycia', undiscovered.length),
-                        const SizedBox(height: 12),
-                        _buildGrid(context, undiscovered, false),
-                      ],
+      backgroundColor: AppTheme.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Header
+            _buildHeader(context, discovered.length, allMonuments.length),
+
+            // Grid
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (discovered.isNotEmpty) ...[
+                      _buildSectionHeader('Odkryte miejsca', discovered.length),
+                      const SizedBox(height: 12),
+                      _buildGrid(context, discovered, true),
+                      const SizedBox(height: 24),
                     ],
-                  ),
+                    if (undiscovered.isNotEmpty) ...[
+                      _buildSectionHeader('Do odkrycia', undiscovered.length),
+                      const SizedBox(height: 12),
+                      _buildGrid(context, undiscovered, false),
+                    ],
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
-  
-  Widget _buildAppBar(BuildContext context, int discovered, int total) {
+
+  Widget _buildHeader(BuildContext context, int discovered, int total) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.arrow_back_ios_new),
+            icon: const Icon(Icons.arrow_back_ios_new, size: 20),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -85,14 +74,17 @@ class CollectionScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Album Pamięci',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  'Album',
+                  style: GoogleFonts.inter(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 Text(
                   '$discovered z $total odkrytych',
-                  style: TextStyle(
+                  style: GoogleFonts.inter(
                     color: AppTheme.textMuted,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -100,24 +92,25 @@ class CollectionScreen extends StatelessWidget {
           ),
           // Progress ring
           SizedBox(
-            width: 48,
-            height: 48,
+            width: 44,
+            height: 44,
             child: Stack(
               fit: StackFit.expand,
               children: [
                 CircularProgressIndicator(
                   value: discovered / total,
-                  backgroundColor: AppTheme.textMuted.withOpacity(0.2),
-                  valueColor: const AlwaysStoppedAnimation(AppTheme.oxidizedCopper),
+                  backgroundColor: AppTheme.surfaceSecondary,
+                  valueColor:
+                      const AlwaysStoppedAnimation(AppTheme.primaryBlue),
                   strokeWidth: 4,
                 ),
                 Center(
                   child: Text(
                     '${((discovered / total) * 100).round()}%',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: AppTheme.oxidizedCopper,
+                    style: GoogleFonts.inter(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: AppTheme.primaryBlue,
                     ),
                   ),
                 ),
@@ -128,24 +121,15 @@ class CollectionScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildSectionHeader(String title, int count) {
     return Row(
       children: [
-        Container(
-          width: 4,
-          height: 20,
-          decoration: BoxDecoration(
-            color: AppTheme.oxidizedCopper,
-            borderRadius: BorderRadius.circular(2),
-          ),
-        ),
-        const SizedBox(width: 12),
         Text(
           title,
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+          style: GoogleFonts.inter(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
             color: AppTheme.textPrimary,
           ),
         ),
@@ -153,23 +137,24 @@ class CollectionScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           decoration: BoxDecoration(
-            color: AppTheme.oxidizedCopper.withOpacity(0.15),
+            color: AppTheme.primaryBlue.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
             '$count',
-            style: const TextStyle(
+            style: GoogleFonts.inter(
               fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.oxidizedCopper,
+              fontWeight: FontWeight.w600,
+              color: AppTheme.primaryBlue,
             ),
           ),
         ),
       ],
     );
   }
-  
-  Widget _buildGrid(BuildContext context, List<Monument> monuments, bool isDiscovered) {
+
+  Widget _buildGrid(
+      BuildContext context, List<Monument> monuments, bool isDiscovered) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -177,142 +162,120 @@ class CollectionScreen extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
-        childAspectRatio: 0.85,
+        childAspectRatio: 0.9,
       ),
       itemCount: monuments.length,
       itemBuilder: (context, index) {
-        return _buildStampCard(context, monuments[index], isDiscovered);
+        return _buildCard(context, monuments[index], isDiscovered);
       },
     );
   }
-  
-  Widget _buildStampCard(BuildContext context, Monument monument, bool isDiscovered) {
+
+  Widget _buildCard(
+      BuildContext context, Monument monument, bool isDiscovered) {
     return GestureDetector(
       onTap: isDiscovered
           ? () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => ChatScreen(monument: monument)),
-            )
+                MaterialPageRoute(
+                    builder: (_) => ChatScreen(monument: monument)),
+              )
           : null,
       child: Container(
         decoration: BoxDecoration(
-          color: isDiscovered ? Colors.white : Colors.grey[200],
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isDiscovered 
-                ? monument.tier.color.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.3),
-            width: 2,
-          ),
-          boxShadow: isDiscovered
-              ? [
-                  BoxShadow(
-                    color: monument.tier.color.withOpacity(0.15),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ]
-              : null,
+          color: isDiscovered ? AppTheme.background : AppTheme.surface,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: isDiscovered ? AppTheme.subtleShadow : null,
         ),
         child: Stack(
           children: [
-            // Stamp perforated edge effect
-            if (isDiscovered)
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: _PerforationPainter(monument.tier.color),
-                ),
-              ),
-            
-            // Content
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
                   // Tier badge
                   Align(
                     alignment: Alignment.topRight,
-                    child: TierBadge(
-                      tier: monument.tier,
-                      showLabel: false,
-                      size: 24,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: isDiscovered
+                            ? monument.tier.color.withOpacity(0.1)
+                            : AppTheme.surfaceSecondary,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        monument.tier.letter,
+                        style: GoogleFonts.inter(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: isDiscovered
+                              ? monument.tier.color
+                              : AppTheme.textMuted,
+                        ),
+                      ),
                     ),
                   ),
-                  
+
                   const Spacer(),
-                  
+
                   // Icon
                   Container(
-                    width: 60,
-                    height: 60,
+                    width: 56,
+                    height: 56,
                     decoration: BoxDecoration(
                       color: isDiscovered
-                          ? monument.tier.color.withOpacity(0.15)
-                          : Colors.grey.withOpacity(0.2),
+                          ? monument.tier.lightColor
+                          : AppTheme.surfaceSecondary,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       isDiscovered ? Icons.account_balance : Icons.lock_outline,
-                      color: isDiscovered ? monument.tier.color : Colors.grey,
-                      size: 30,
+                      color: isDiscovered
+                          ? monument.tier.color
+                          : AppTheme.textMuted,
+                      size: 26,
                     ),
                   ),
-                  
+
                   const Spacer(),
-                  
+
                   // Name
                   Text(
                     monument.name,
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: isDiscovered ? AppTheme.textPrimary : Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      color: isDiscovered
+                          ? AppTheme.textPrimary
+                          : AppTheme.textMuted,
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  
+
                   const SizedBox(height: 4),
-                  
-                  // Action hint
-                  if (isDiscovered)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.replay,
-                          size: 12,
-                          color: AppTheme.textMuted,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          'Wspomnienie',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: AppTheme.textMuted,
-                          ),
-                        ),
-                      ],
-                    )
-                  else
-                    Text(
-                      'Nieodkryte',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.grey,
-                        fontStyle: FontStyle.italic,
-                      ),
+
+                  Text(
+                    isDiscovered ? 'Wspomnienie' : 'Nieodkryte',
+                    style: GoogleFonts.inter(
+                      fontSize: 11,
+                      color: isDiscovered
+                          ? AppTheme.primaryBlue
+                          : AppTheme.textMuted,
                     ),
+                  ),
                 ],
               ),
             ),
-            
-            // Lock overlay for undiscovered
+
+            // Lock overlay
             if (!isDiscovered)
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
           ],
@@ -320,44 +283,4 @@ class CollectionScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-/// Painter for stamp perforation effect
-class _PerforationPainter extends CustomPainter {
-  final Color color;
-  
-  _PerforationPainter(this.color);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color.withOpacity(0.3)
-      ..style = PaintingStyle.fill;
-    
-    const dotRadius = 3.0;
-    const spacing = 12.0;
-    
-    // Top edge
-    for (double x = spacing; x < size.width - spacing; x += spacing) {
-      canvas.drawCircle(Offset(x, 0), dotRadius, paint);
-    }
-    
-    // Bottom edge
-    for (double x = spacing; x < size.width - spacing; x += spacing) {
-      canvas.drawCircle(Offset(x, size.height), dotRadius, paint);
-    }
-    
-    // Left edge
-    for (double y = spacing; y < size.height - spacing; y += spacing) {
-      canvas.drawCircle(Offset(0, y), dotRadius, paint);
-    }
-    
-    // Right edge
-    for (double y = spacing; y < size.height - spacing; y += spacing) {
-      canvas.drawCircle(Offset(size.width, y), dotRadius, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/monuments_data.dart';
 import '../models/badge.dart';
-import '../widgets/frosted_glass_panel.dart';
 import '../widgets/copper_button.dart';
 
-/// Screen 8: "Ścieżki i Odznaczenia" - Quests & Badges Screen
-/// Gamification and thematic rewards
+/// Screen 8: Quests - Clean progress design
 class QuestsScreen extends StatefulWidget {
   final List<String> discoveredIds;
-  
+
   const QuestsScreen({
     super.key,
     required this.discoveredIds,
@@ -27,27 +25,15 @@ class _QuestsScreenState extends State<QuestsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.background,
       body: Stack(
         children: [
-          // Background
-          Container(
-            decoration: BoxDecoration(
-              color: AppTheme.porcelainWhite,
-              image: const DecorationImage(
-                image: AssetImage('assets/textures/wooden-floor-background.jpg'),
-                fit: BoxFit.cover,
-                opacity: 0.3,
-              ),
-            ),
-          ),
-          
-          // Main content
           SafeArea(
             child: Column(
               children: [
-                // App bar
-                _buildAppBar(context),
-                
+                // Header
+                _buildHeader(context),
+
                 // Quests list
                 Expanded(
                   child: ListView.builder(
@@ -61,23 +47,21 @@ class _QuestsScreenState extends State<QuestsScreen> {
               ],
             ),
           ),
-          
-          // Badge unlock animation overlay
           if (_showBadgeAnimation && _unlockedBadge != null)
             _buildBadgeAnimation(_unlockedBadge!),
         ],
       ),
     );
   }
-  
-  Widget _buildAppBar(BuildContext context) {
+
+  Widget _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.arrow_back_ios_new),
+            icon: const Icon(Icons.arrow_back_ios_new, size: 20),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -85,14 +69,17 @@ class _QuestsScreenState extends State<QuestsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Ścieżki i Odznaczenia',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  'Wyzwania',
+                  style: GoogleFonts.inter(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 Text(
-                  'Ukończ wyzwania, zdobądź nagrody',
-                  style: TextStyle(
+                  'Ukończ ścieżki, zdobądź nagrody',
+                  style: GoogleFonts.inter(
                     color: AppTheme.textMuted,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -102,45 +89,34 @@ class _QuestsScreenState extends State<QuestsScreen> {
       ),
     );
   }
-  
+
   Widget _buildQuestCard(Quest quest) {
     final completedCount = quest.completedCount(widget.discoveredIds);
     final totalCount = quest.monumentIds.length;
     final progress = quest.progress(widget.discoveredIds);
     final isComplete = quest.isComplete(widget.discoveredIds);
-    
+
     Color themeColor;
     switch (quest.themeColor) {
       case 'gold':
-        themeColor = AppTheme.oldGold;
+        themeColor = AppTheme.accentYellow;
         break;
       case 'silver':
         themeColor = AppTheme.tierA;
         break;
       default:
-        themeColor = AppTheme.oxidizedCopper;
+        themeColor = AppTheme.primaryBlue;
     }
-    
+
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: isComplete 
-              ? themeColor.withOpacity(0.5)
-              : AppTheme.textMuted.withOpacity(0.2),
-          width: isComplete ? 2 : 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: isComplete 
-                ? themeColor.withOpacity(0.2)
-                : Colors.black.withOpacity(0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: AppTheme.background,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: AppTheme.subtleShadow,
+        border: isComplete
+            ? Border.all(color: themeColor.withOpacity(0.3), width: 2)
+            : null,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,47 +125,41 @@ class _QuestsScreenState extends State<QuestsScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: themeColor.withOpacity(0.1),
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(15),
-              ),
+              color: themeColor.withOpacity(0.08),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(18)),
             ),
             child: Row(
               children: [
-                // Quest icon
                 Container(
-                  width: 48,
-                  height: 48,
+                  width: 44,
+                  height: 44,
                   decoration: BoxDecoration(
-                    color: themeColor.withOpacity(0.2),
+                    color: themeColor.withOpacity(0.15),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     isComplete ? Icons.check_circle : Icons.flag_outlined,
                     color: themeColor,
-                    size: 24,
+                    size: 22,
                   ),
                 ),
-                
                 const SizedBox(width: 12),
-                
-                // Title and description
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         quest.name,
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                           color: AppTheme.textPrimary,
                         ),
                       ),
-                      const SizedBox(height: 4),
                       Text(
                         quest.description,
-                        style: TextStyle(
+                        style: GoogleFonts.inter(
                           fontSize: 13,
                           color: AppTheme.textSecondary,
                         ),
@@ -200,8 +170,8 @@ class _QuestsScreenState extends State<QuestsScreen> {
               ],
             ),
           ),
-          
-          // Progress section
+
+          // Progress
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -215,119 +185,100 @@ class _QuestsScreenState extends State<QuestsScreen> {
                         borderRadius: BorderRadius.circular(6),
                         child: LinearProgressIndicator(
                           value: progress,
-                          backgroundColor: themeColor.withOpacity(0.15),
+                          backgroundColor: themeColor.withOpacity(0.1),
                           valueColor: AlwaysStoppedAnimation(themeColor),
-                          minHeight: 10,
+                          minHeight: 8,
                         ),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Text(
                       '$completedCount/$totalCount',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
                         color: themeColor,
-                        fontSize: 16,
+                        fontSize: 14,
                       ),
                     ),
                   ],
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Monuments list
                 ...quest.monumentIds.map((id) {
                   final monument = MonumentsData.getById(id);
                   final isCompleted = widget.discoveredIds.contains(id);
-                  
+
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: Row(
                       children: [
                         Icon(
-                          isCompleted 
-                              ? Icons.check_circle 
+                          isCompleted
+                              ? Icons.check_circle_outline
                               : Icons.radio_button_unchecked,
                           color: isCompleted ? themeColor : AppTheme.textMuted,
-                          size: 20,
+                          size: 18,
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 10),
                         Text(
                           monument?.name ?? id,
-                          style: TextStyle(
-                            color: isCompleted 
-                                ? AppTheme.textPrimary 
+                          style: GoogleFonts.inter(
+                            color: isCompleted
+                                ? AppTheme.textPrimary
                                 : AppTheme.textMuted,
-                            decoration: isCompleted 
-                                ? null 
-                                : null,
-                            fontWeight: isCompleted 
-                                ? FontWeight.w500 
+                            fontWeight: isCompleted
+                                ? FontWeight.w500
                                 : FontWeight.normal,
+                            fontSize: 14,
                           ),
                         ),
                       ],
                     ),
                   );
                 }),
-                
+
                 const SizedBox(height: 16),
-                
-                // Reward preview
+
+                // Reward
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppTheme.porcelainWhite,
+                    color: AppTheme.surface,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: themeColor.withOpacity(0.2),
-                    ),
                   ),
                   child: Row(
                     children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: themeColor.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.military_tech,
-                          color: themeColor,
-                          size: 24,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
+                      Icon(Icons.military_tech, color: themeColor, size: 22),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'NAGRODA',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
+                            Text(
+                              'Nagroda',
+                              style: GoogleFonts.inter(
+                                fontSize: 11,
                                 color: AppTheme.textMuted,
-                                letterSpacing: 1,
                               ),
                             ),
-                            const SizedBox(height: 2),
                             Text(
                               quest.reward.name,
-                              style: TextStyle(
+                              style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w600,
                                 color: themeColor,
+                                fontSize: 14,
                               ),
                             ),
                           ],
                         ),
                       ),
                       if (isComplete)
-                        CopperButton(
-                          text: 'ODBIERZ',
+                        GradientButton(
+                          text: 'Odbierz',
                           onPressed: () => _showBadgeUnlock(quest.reward),
-                          useGoldGradient: quest.themeColor == 'gold',
+                          useAccentGradient: quest.themeColor == 'gold',
                         ),
                     ],
                   ),
@@ -339,14 +290,14 @@ class _QuestsScreenState extends State<QuestsScreen> {
       ),
     );
   }
-  
+
   void _showBadgeUnlock(Badge badge) {
     setState(() {
       _showBadgeAnimation = true;
       _unlockedBadge = badge;
     });
   }
-  
+
   Widget _buildBadgeAnimation(Badge badge) {
     return GestureDetector(
       onTap: () {
@@ -361,142 +312,67 @@ class _QuestsScreenState extends State<QuestsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Title
               Text(
-                'ODZNAKA ZDOBYTA!',
-                style: GoogleFonts.playfairDisplay(
+                'Odznaka zdobyta!',
+                style: GoogleFonts.inter(
                   fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.oldGold,
-                  letterSpacing: 2,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.accentYellow,
                 ),
               ),
-              
               const SizedBox(height: 40),
-              
-              // Badge
               TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0, end: 1),
-                duration: const Duration(milliseconds: 800),
+                duration: const Duration(milliseconds: 600),
                 curve: Curves.elasticOut,
                 builder: (context, value, child) {
-                  return Transform.scale(
-                    scale: value,
-                    child: child,
-                  );
+                  return Transform.scale(scale: value, child: child);
                 },
                 child: Container(
-                  width: 180,
-                  height: 180,
+                  width: 140,
+                  height: 140,
                   decoration: BoxDecoration(
+                    gradient: AppTheme.primaryGradient,
                     shape: BoxShape.circle,
-                    gradient: AppTheme.copperGradient,
                     boxShadow: [
                       BoxShadow(
-                        color: AppTheme.oxidizedCopper.withOpacity(0.5),
-                        blurRadius: 40,
-                        spreadRadius: 10,
+                        color: AppTheme.primaryBlue.withOpacity(0.4),
+                        blurRadius: 30,
+                        spreadRadius: 5,
                       ),
                     ],
-                    border: Border.all(
-                      color: AppTheme.copperLight,
-                      width: 4,
-                    ),
                   ),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Inner ring
-                      Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.3),
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      // Icon
-                      const Icon(
-                        Icons.music_note,
-                        color: Colors.white,
-                        size: 60,
-                      ),
-                    ],
+                  child: const Icon(
+                    Icons.emoji_events,
+                    color: Colors.white,
+                    size: 60,
                   ),
                 ),
               ),
-              
               const SizedBox(height: 32),
-              
-              // Badge name
               Text(
                 badge.name,
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                style: GoogleFonts.inter(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
               ),
-              
-              const SizedBox(height: 12),
-              
-              // Description
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  badge.description,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white.withOpacity(0.8),
-                  ),
-                  textAlign: TextAlign.center,
+              const SizedBox(height: 8),
+              Text(
+                badge.description,
+                style: GoogleFonts.inter(
+                  fontSize: 15,
+                  color: Colors.white.withOpacity(0.7),
                 ),
+                textAlign: TextAlign.center,
               ),
-              
-              if (badge.unlockedTopic != null) ...[
-                const SizedBox(height: 24),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 40),
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: AppTheme.oldGold.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: AppTheme.oldGold.withOpacity(0.5),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.auto_awesome,
-                        color: AppTheme.oldGold,
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          'BONUS: ${badge.unlockedTopic}',
-                          style: const TextStyle(
-                            color: AppTheme.oldGold,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-              
               const SizedBox(height: 48),
-              
-              // Close hint
               Text(
                 'Dotknij, aby zamknąć',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
-                  fontSize: 14,
+                style: GoogleFonts.inter(
+                  color: Colors.white.withOpacity(0.4),
+                  fontSize: 13,
                 ),
               ),
             ],

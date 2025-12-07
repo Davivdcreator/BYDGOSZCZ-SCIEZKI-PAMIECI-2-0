@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
 
-/// Tier system for monuments - determines AI behavior depth
+/// Tier system for monuments - determines AI behavior and visual style
 enum MonumentTier {
-  /// Tier C - Echa (Echoes) - Basic factoids
-  tierC,
-  
-  /// Tier B - Świadkowie (Witnesses) - Nostalgic observer
-  tierB,
-  
-  /// Tier A - Patroni (Patrons) - Historical role-play
-  tierA,
-  
-  /// Tier S - Ikony (Icons) - Metaphysical immersion
-  tierS,
+  tierC, // Echa - Faktograf
+  tierB, // Świadkowie - Obserwator
+  tierA, // Patroni - Postać
+  tierS, // Ikony - Symbol
 }
 
-extension TierExtension on MonumentTier {
-  /// Display name in Polish
+extension MonumentTierExtension on MonumentTier {
+  /// Display name for the tier
   String get displayName {
     switch (this) {
       case MonumentTier.tierC:
@@ -30,21 +23,7 @@ extension TierExtension on MonumentTier {
         return 'Ikony';
     }
   }
-  
-  /// English subtitle
-  String get englishName {
-    switch (this) {
-      case MonumentTier.tierC:
-        return 'Echoes';
-      case MonumentTier.tierB:
-        return 'Witnesses';
-      case MonumentTier.tierA:
-        return 'Patrons';
-      case MonumentTier.tierS:
-        return 'Icons';
-    }
-  }
-  
+
   /// Tier letter
   String get letter {
     switch (this) {
@@ -58,8 +37,8 @@ extension TierExtension on MonumentTier {
         return 'S';
     }
   }
-  
-  /// UI color for the tier
+
+  /// Color for the tier (Modern palette)
   Color get color {
     switch (this) {
       case MonumentTier.tierC:
@@ -72,45 +51,59 @@ extension TierExtension on MonumentTier {
         return AppTheme.tierS;
     }
   }
-  
+
+  /// Light color variant for backgrounds
+  Color get lightColor {
+    switch (this) {
+      case MonumentTier.tierC:
+        return AppTheme.tierC.withOpacity(0.1);
+      case MonumentTier.tierB:
+        return AppTheme.primaryBlueLight.withOpacity(0.15);
+      case MonumentTier.tierA:
+        return AppTheme.tierA.withOpacity(0.1);
+      case MonumentTier.tierS:
+        return AppTheme.accentYellowLight.withOpacity(0.2);
+    }
+  }
+
   /// Description of AI behavior
-  String get aiDescription {
+  String get aiBehavior {
     switch (this) {
       case MonumentTier.tierC:
-        return 'Faktograf - krótkie cytaty i ciekawostki historyczne';
+        return 'Faktograf - krótkie fakty historyczne';
       case MonumentTier.tierB:
-        return 'Obserwator - nostalgiczne opowieści o dawnym życiu ulicy';
+        return 'Obserwator - nostalgiczne narracje';
       case MonumentTier.tierA:
-        return 'Postać - pełne wcielenie w rolę historyczną z emocjami';
+        return 'Postać - historyczny role-play';
       case MonumentTier.tierS:
-        return 'Symbol - metafizyczna rozmowa o uniwersalnych wartościach';
+        return 'Symbol - metafizyczna immersja';
     }
   }
-  
-  /// Object types for this tier
-  String get objectTypes {
+
+  /// Object type description
+  String get objectType {
     switch (this) {
       case MonumentTier.tierC:
-        return 'Tablice pamiątkowe, detale architektoniczne, mniejsze rzeźby';
+        return 'Miejsce historyczne';
       case MonumentTier.tierB:
-        return 'Kamienice, mosty, bramy, budynki użyteczności publicznej';
+        return 'Pomnik';
       case MonumentTier.tierA:
-        return 'Pomniki postaci, kluczowe zabytki (Fara, Opera)';
+        return 'Postać historyczna';
       case MonumentTier.tierS:
-        return 'Łuczniczka, Przechodzący przez rzekę, Spichrze';
+        return 'Ikona miasta';
     }
   }
-  
-  /// Whether voice control is available
+
+  /// Voice control availability
   bool get hasVoiceControl => this == MonumentTier.tierS;
-  
-  /// Gradient for premium tiers
+
+  /// Get gradient for this tier
   LinearGradient? get gradient {
     switch (this) {
-      case MonumentTier.tierB:
-        return AppTheme.copperGradient;
       case MonumentTier.tierS:
-        return AppTheme.goldGradient;
+        return AppTheme.accentGradient;
+      case MonumentTier.tierB:
+        return AppTheme.primaryGradient;
       default:
         return null;
     }
