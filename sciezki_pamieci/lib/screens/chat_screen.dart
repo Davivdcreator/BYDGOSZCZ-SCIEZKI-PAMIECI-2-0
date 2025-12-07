@@ -348,6 +348,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         return Icons.person_outline;
       case MonumentTier.tierS:
         return Icons.auto_awesome;
+      case MonumentTier.tierUnique:
+        return Icons.diamond_outlined;
     }
   }
 }

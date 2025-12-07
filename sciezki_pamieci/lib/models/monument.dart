@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import '../theme/tier_colors.dart';
 
@@ -37,10 +39,10 @@ class Monument {
   bool isDiscovered(List<String> discoveredIds) => discoveredIds.contains(id);
 
   /// Get tier color
-  get tierColor => tier.color;
+  Color get tierColor => tier.color;
 
   /// Get tier display name
-  get tierName => tier.displayName;
+  String get tierName => tier.displayName;
 
   factory Monument.fromFirestore(Map<String, dynamic> data, String id) {
     // Better safe parsing
@@ -60,6 +62,14 @@ class Monument {
           lng = (loc['longitude'] as num?)?.toDouble() ?? 18.0084;
         }
       }
+    }
+
+    // Fix stacking: if coordinates are EXACTLY default, add random jitter
+    if ((lat - 53.1235).abs() < 0.0001 && (lng - 18.0084).abs() < 0.0001) {
+      final random = Random(id.hashCode);
+      // Spread within ~1km radius
+      lat += (random.nextDouble() - 0.5) * 0.02;
+      lng += (random.nextDouble() - 0.5) * 0.02;
     }
 
     return Monument(

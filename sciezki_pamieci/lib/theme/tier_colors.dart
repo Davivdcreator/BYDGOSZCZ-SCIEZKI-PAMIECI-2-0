@@ -7,6 +7,7 @@ enum MonumentTier {
   tierB, // Świadkowie - Obserwator
   tierA, // Patroni - Postać
   tierS, // Ikony - Symbol
+  tierUnique, // Unikalne - Specjalne
 }
 
 extension MonumentTierExtension on MonumentTier {
@@ -21,6 +22,8 @@ extension MonumentTierExtension on MonumentTier {
         return 'Patroni';
       case MonumentTier.tierS:
         return 'Ikony';
+      case MonumentTier.tierUnique:
+        return 'Unikalne';
     }
   }
 
@@ -35,6 +38,8 @@ extension MonumentTierExtension on MonumentTier {
         return 'A';
       case MonumentTier.tierS:
         return 'S';
+      case MonumentTier.tierUnique:
+        return 'U';
     }
   }
 
@@ -49,6 +54,8 @@ extension MonumentTierExtension on MonumentTier {
         return AppTheme.tierA;
       case MonumentTier.tierS:
         return AppTheme.tierS;
+      case MonumentTier.tierUnique:
+        return Colors.purpleAccent; // Distinct color for Unique
     }
   }
 
@@ -63,6 +70,8 @@ extension MonumentTierExtension on MonumentTier {
         return AppTheme.tierA.withOpacity(0.1);
       case MonumentTier.tierS:
         return AppTheme.accentYellowLight.withOpacity(0.2);
+      case MonumentTier.tierUnique:
+        return Colors.purpleAccent.withOpacity(0.15);
     }
   }
 
@@ -77,6 +86,8 @@ extension MonumentTierExtension on MonumentTier {
         return 'Postać - historyczny role-play';
       case MonumentTier.tierS:
         return 'Symbol - metafizyczna immersja';
+      case MonumentTier.tierUnique:
+        return 'Ekspert - unikalna wiedza specjalistyczna';
     }
   }
 
@@ -91,11 +102,14 @@ extension MonumentTierExtension on MonumentTier {
         return 'Postać historyczna';
       case MonumentTier.tierS:
         return 'Ikona miasta';
+      case MonumentTier.tierUnique:
+        return 'Unikalna atrakcja';
     }
   }
 
   /// Voice control availability
-  bool get hasVoiceControl => this == MonumentTier.tierS;
+  bool get hasVoiceControl =>
+      this == MonumentTier.tierS || this == MonumentTier.tierUnique;
 
   /// Get gradient for this tier
   LinearGradient? get gradient {
@@ -104,6 +118,12 @@ extension MonumentTierExtension on MonumentTier {
         return AppTheme.accentGradient;
       case MonumentTier.tierB:
         return AppTheme.primaryGradient;
+      case MonumentTier.tierUnique:
+        return const LinearGradient(
+          colors: [Colors.purpleAccent, Colors.deepPurple],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        );
       default:
         return null;
     }

@@ -43,6 +43,10 @@
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Aplikacja wymaga dostępu do sieci lokalnej w celu debugowania i komunikacji.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Aplikacja potrzebuje dostępu do lokalizacji, aby pokazać Twoją pozycję na mapie i pomóc Ci znaleźć pobliskie zabytki.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Aplikacja potrzebuje dostępu do lokalizacji, aby pokazać Twoją pozycję na mapie.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

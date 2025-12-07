@@ -163,39 +163,25 @@ class _OnboardingScreenState extends State<OnboardingScreen>
       width: 140,
       height: 140,
       decoration: BoxDecoration(
-        color: AppTheme.surface,
         shape: BoxShape.circle,
         boxShadow: AppTheme.cardShadow,
       ),
       child: ClipOval(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Image.asset(
-            'assets/textures/logo bydgoszcz.png',
-            fit: BoxFit.contain,
-            errorBuilder: (context, error, stackTrace) {
-              // Fallback to houses if logo not found
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildHouse(AppTheme.warmRed, 24),
-                  const SizedBox(width: 4),
-                  _buildHouse(AppTheme.accentYellow, 32),
-                  const SizedBox(width: 4),
-                  _buildHouse(AppTheme.primaryBlue, 28),
-                ],
-              );
-            },
-          ),
+        child: Image.asset(
+          'assets/images/app_logo.png',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: AppTheme.primaryBlue.withOpacity(0.1),
+              child: Icon(
+                Icons.location_city,
+                size: 70,
+                color: AppTheme.primaryBlue,
+              ),
+            );
+          },
         ),
       ),
-    );
-  }
-
-  Widget _buildHouse(Color color, double height) {
-    return CustomPaint(
-      size: Size(height * 0.8, height),
-      painter: _HousePainter(color),
     );
   }
 
@@ -204,51 +190,4 @@ class _OnboardingScreenState extends State<OnboardingScreen>
       MaterialPageRoute(builder: (_) => const LoginScreen()),
     );
   }
-}
-
-class _HousePainter extends CustomPainter {
-  final Color color;
-
-  _HousePainter(this.color);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    final path = Path();
-    // Roof
-    path.moveTo(size.width / 2, 0);
-    path.lineTo(0, size.height * 0.4);
-    path.lineTo(size.width, size.height * 0.4);
-    path.close();
-
-    // Body
-    path.addRect(Rect.fromLTWH(
-      size.width * 0.1,
-      size.height * 0.4,
-      size.width * 0.8,
-      size.height * 0.6,
-    ));
-
-    canvas.drawPath(path, paint);
-
-    // Window (cutout effect)
-    final windowPaint = Paint()
-      ..color = Colors.white.withOpacity(0.3)
-      ..style = PaintingStyle.fill;
-
-    canvas.drawRect(
-      Rect.fromCenter(
-        center: Offset(size.width / 2, size.height * 0.65),
-        width: size.width * 0.3,
-        height: size.height * 0.25,
-      ),
-      windowPaint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

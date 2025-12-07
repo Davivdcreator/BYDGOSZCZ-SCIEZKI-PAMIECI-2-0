@@ -67,15 +67,36 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               const Spacer(),
               // Logo
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: AppTheme.cardShadow,
-                  image: const DecorationImage(
-                    image: AssetImage('assets/textures/logo bydgoszcz.png'),
-                    fit: BoxFit.contain,
+              Hero(
+                tag: 'app_logo',
+                child: Container(
+                  height: 120,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppTheme.primaryBlue.withOpacity(0.3),
+                        blurRadius: 20,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/app_logo.png',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: AppTheme.primaryBlue.withOpacity(0.1),
+                          child: Icon(
+                            Icons.location_city,
+                            size: 60,
+                            color: AppTheme.primaryBlue,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

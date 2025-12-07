@@ -5,6 +5,7 @@ import '../services/auth_service.dart';
 import '../services/user_service.dart';
 import '../theme/app_theme.dart';
 import 'login_screen.dart';
+import 'collection_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -112,26 +113,41 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: AppTheme.cardShadow,
-              ),
-              child: Center(
-                child: Column(
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => CollectionScreen(discoveredIds: const []),
+                  ),
+                );
+              },
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: AppTheme.cardShadow,
+                ),
+                child: Row(
                   children: [
-                    const Icon(Icons.emoji_events_outlined,
-                        size: 48, color: Colors.amber),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Odkrywaj miejsca, aby zdobywać odznaki!',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(
-                        color: AppTheme.textSecondary,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.emoji_events_outlined,
+                              size: 48, color: Colors.amber),
+                          const SizedBox(height: 12),
+                          Text(
+                            'Odkrywaj miejsca, aby zdobywać odznaki!',
+                            style: GoogleFonts.inter(
+                              color: AppTheme.textSecondary,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    const Icon(Icons.chevron_right, color: AppTheme.textMuted),
                   ],
                 ),
               ),
@@ -139,7 +155,6 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            // Logout Button
             SizedBox(
               width: double.infinity,
               height: 54,
