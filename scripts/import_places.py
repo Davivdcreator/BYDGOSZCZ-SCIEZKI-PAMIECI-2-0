@@ -8,6 +8,50 @@ import sys
 
 import os
 
+
+import ssl
+import certifi
+import geopy.geocoders
+from geopy.geocoders import Nominatim
+
+def get_tier_and_tags(name):
+    name_lower = name.lower()
+    
+    tier = 'tierB' # Default
+    tags = ['Imported']
+    
+    # Tier S - Iconic / Must See
+    if any(x in name_lower for x in ['łuczniczk', 'spichrz', 'wysp', 'przechodzący', 'katedr']):
+        tier = 'tierS'
+        tags.append('Ikona Miasta')
+        if 'katedr' in name_lower: tags.append('Religia')
+        if 'wysp' in name_lower: tags.append('Natura')
+
+    # Tier A - Major attractions
+    elif any(x in name_lower for x in ['fontann', 'muze', 'oper', 'filharmoni', 'kościół', 'fara', 'bazylik', 'młyn']):
+        tier = 'tierA'
+        if 'fontann' in name_lower: tags.append('Fontanna')
+        if 'muze' in name_lower or 'młyn' in name_lower: tags.append('Muzeum')
+        if 'kościół' in name_lower or 'fara' in name_lower or 'bazylik' in name_lower: tags.append('Religia')
+
+    # Tier B - Statues, Nature, Parks
+    elif any(x in name_lower for x in ['pomnik', 'rzeźb', 'popiers', 'wioślarz', 'lew', 'park', 'ogród', 'skwer', 'platan', 'dąb', 'kanał', 'śluz']):
+        tier = 'tierB'
+        if any(k in name_lower for k in ['pomnik', 'rzeźb', 'popiers', 'wioślarz', 'lew']): tags.append('Pomnik')
+        if any(k in name_lower for k in ['park', 'ogród', 'skwer', 'platan', 'dąb', 'kanał', 'śluz']): tags.append('Natura')
+
+    # Tier C - Plaques, Murals, Minor details
+    elif any(x in name_lower for x in ['mural', 'graffiti', 'tablic', 'kamień', 'głaz', 'makieł']):
+        tier = 'tierC'
+        if 'mural' in name_lower or 'graffiti' in name_lower: tags.append('Mural')
+        if 'tablic' in name_lower or 'kamień' in name_lower or 'głaz' in name_lower: tags.append('Historia')
+
+    # Random bump to tier S for variety if it's already A
+    if tier == 'tierA' and hash(name) % 5 == 0:
+         tier = 'tierS'
+
+    return tier, tags
+
 def main():
     print("Initializing Firebase...")
     try:
@@ -30,14 +74,12 @@ def main():
         db = firestore.client()
     except Exception as e:
         print(f"Error connecting to Firestore: {e}")
-        print("Authentication missing. Please either:")
-        print("1. Run: gcloud auth application-default login (if gcloud is installed)")
-        print("2. Or download a Service Account Key from Firebase Console -> Project Settings -> Service Accounts")
-        print("   and save it as 'service_account.json' in this directory.")
         return
 
-    print("Initializing Geocoder...")
-    geolocator = Nominatim(user_agent="visit_bydgoszcz_importer_v1")
+    print("Initializing Geocoder with SSL fix...")
+    ctx = ssl.create_default_context(cafile=certifi.where())
+    geopy.geocoders.options.default_ssl_context = ctx
+    geolocator = Nominatim(user_agent="visit_bydgoszcz_importer_v1", ssl_context=ctx)
 
     print("Reading Excel file...")
     try:
@@ -81,14 +123,16 @@ def main():
         # Prepare data
         doc_id = re.sub(r'[^a-z0-9]', '_', name.lower())
         
+        tier, tags = get_tier_and_tags(name)
+        
         data = {
             'id': doc_id,
             'name': name,
             'description': name, # Placeholder
             'shortDescription': address if address != 'nan' else '',
             'imageUrl': image_url,
-            'tier': 'tierB', # Default
-            'tags': ['Imported'],
+            'tier': tier,
+            'tags': tags,
             'dataSource': 'excel',
             'aiPersonality': 'Jestem nowym miejscem na mapie Bydgoszczy.'
         }
@@ -102,7 +146,7 @@ def main():
 
         try:
             db.collection('monuments').document(doc_id).set(data, merge=True)
-            print("  Uploaded to Firestore.")
+            print(f"  Uploaded to Firestore: {tier} | {tags}")
         except Exception as e:
             print(f"  Error uploading: {e}")
 

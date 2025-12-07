@@ -131,12 +131,26 @@ class DiscoveryCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppTheme.surface,
             borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-                    image: NetworkImage(monument.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
           ),
-          child: null,
+          clipBehavior: Clip.antiAlias,
+          child: Image.network(
+            monument.imageUrl,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                color: Colors.grey[200],
+                child: const Center(
+                  child: Icon(
+                    Icons.image_not_supported,
+                    color: Colors.grey,
+                    size: 40,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
 
         // Tier badge

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2000 2000">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: #0094da;
+      }
+
+      .cls-2 {
+        clip-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        font-family: BradleyHandITCTT-Bold, 'Bradley Hand';
+        font-size: 52.57px;
+        font-weight: 700;
+        stroke: #0094da;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-2" d="M1121.96,1039.01c-67.38,67.38-176.54,67.38-243.92,0-67.38-67.38-67.38-176.54,0-243.92,32.52-32.52,75.97-50.52,121.96-50.52v-102.74c-70.43,0-140.87,26.87-194.6,80.61-107.48,107.48-107.48,281.73,0,389.21l194.6,194.6,194.6-194.6c53.74-53.74,80.61-124.17,80.61-194.6h-102.74c0,45.99-18,89.44-50.52,121.96"/>
+    </clipPath>
+  </defs>
+  <g>
+    <g>
+      <path class="cls-3" d="M1121.96,1039.01c-67.38,67.38-176.54,67.38-243.92,0-67.38-67.38-67.38-176.54,0-243.92,32.52-32.52,75.97-50.52,121.96-50.52v-102.74c-70.43,0-140.87,26.87-194.6,80.61-107.48,107.48-107.48,281.73,0,389.21l194.6,194.6,194.6-194.6c53.74-53.74,80.61-124.17,80.61-194.6h-102.74c0,45.99-18,89.44-50.52,121.96"/>
+      <g class="cls-5">
+        <rect class="cls-1" x="697.92" y="641.84" width="577.29" height="664.42"/>
+      </g>
+    </g>
+    <text class="cls-4" transform="translate(1037.49 656.53) rotate(11.46) scale(1.03 1)"><tspan x="0" y="0">B</tspan></text>
+    <text class="cls-4" transform="translate(1072.76 663.62) rotate(18.78) scale(1.03 1)"><tspan x="0" y="0">Y</tspan></text>
+    <text class="cls-4" transform="translate(1106.65 675.14) rotate(25.95) scale(1.03 1)"><tspan x="0" y="0">D</tspan></text>
+    <text class="cls-4" transform="translate(1137.21 689.74) rotate(33.51) scale(1.03 1)"><tspan x="0" y="0">G</tspan></text>
+    <text class="cls-4" transform="translate(1170.03 711.44) rotate(41.5) scale(1.03 1)"><tspan x="0" y="0">O</tspan></text>
+    <text class="cls-4" transform="translate(1198.42 736.39) rotate(49.51) scale(1.03 1)"><tspan x="0" y="0">S</tspan></text>
+    <text class="cls-4" transform="translate(1224.04 765.69) rotate(58.66) scale(1.03 1)"><tspan x="0" y="0">Z</tspan></text>
+    <text class="cls-4" transform="translate(1248.49 806.75) rotate(67.33) scale(1.03 1)"><tspan x="0" y="0">C</tspan></text>
+    <text class="cls-4" transform="translate(1261.76 836.78) rotate(76.11) scale(1.03 1)"><tspan x="0" y="0">Z</tspan></text>
+  </g>
+  <circle class="cls-1" cx="1006.5" cy="904" r="70.06"/>
+</svg>
