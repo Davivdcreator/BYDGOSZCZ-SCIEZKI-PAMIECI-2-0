@@ -239,7 +239,7 @@ class _GamesScreenState extends State<GamesScreen> {
                     // Meta info
                     Row(
                       children: [
-                        Icon(Icons.access_time,
+                        const Icon(Icons.access_time,
                             size: 16, color: AppTheme.textMuted),
                         const SizedBox(width: 4),
                         Text(
@@ -250,7 +250,7 @@ class _GamesScreenState extends State<GamesScreen> {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        Icon(Icons.location_on,
+                        const Icon(Icons.location_on,
                             size: 16, color: AppTheme.textMuted),
                         const SizedBox(width: 4),
                         Expanded(
@@ -319,7 +319,7 @@ class _GamesScreenState extends State<GamesScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.search_off, size: 64, color: AppTheme.textMuted),
+          const Icon(Icons.search_off, size: 64, color: AppTheme.textMuted),
           const SizedBox(height: 16),
           Text(
             'Brak gier w tej kategorii',

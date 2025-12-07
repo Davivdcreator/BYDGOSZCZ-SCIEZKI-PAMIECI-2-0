@@ -168,12 +168,12 @@ class _OnboardingScreenState extends State<OnboardingScreen>
       ),
       child: ClipOval(
         child: Image.asset(
-          'assets/images/app_logo.png',
-          fit: BoxFit.cover,
+          'assets/images/app_logo_new.png',
+          fit: BoxFit.contain,
           errorBuilder: (context, error, stackTrace) {
             return Container(
               color: AppTheme.primaryBlue.withOpacity(0.1),
-              child: Icon(
+              child: const Icon(
                 Icons.location_city,
                 size: 70,
                 color: AppTheme.primaryBlue,

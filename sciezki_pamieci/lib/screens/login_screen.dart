@@ -58,103 +58,106 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppTheme.background,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              // Logo
-              Hero(
-                tag: 'app_logo',
-                child: Container(
-                  height: 120,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppTheme.primaryBlue.withOpacity(0.3),
-                        blurRadius: 20,
-                        offset: const Offset(0, 10),
+      body: SizedBox.expand(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                // Logo
+                Hero(
+                  tag: 'app_logo',
+                  child: Container(
+                    height: 120,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.primaryBlue.withOpacity(0.3),
+                          blurRadius: 20,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/app_logo_new.png',
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: AppTheme.primaryBlue.withOpacity(0.1),
+                            child: const Icon(
+                              Icons.location_city,
+                              size: 60,
+                              color: AppTheme.primaryBlue,
+                            ),
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                  child: ClipOval(
-                    child: Image.asset(
-                      'assets/images/app_logo.png',
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: AppTheme.primaryBlue.withOpacity(0.1),
-                          child: Icon(
-                            Icons.location_city,
-                            size: 60,
-                            color: AppTheme.primaryBlue,
-                          ),
-                        );
-                      },
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 32),
-              Text(
-                'Witaj w Bydgoszczy',
-                style: GoogleFonts.inter(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.textPrimary,
+                const SizedBox(height: 32),
+                Text(
+                  'Witaj w Bydgoszczy',
+                  style: GoogleFonts.inter(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.textPrimary,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Zaloguj się, aby zapisać postępy',
-                style: GoogleFonts.inter(
-                  fontSize: 16,
-                  color: AppTheme.textSecondary,
+                const SizedBox(height: 8),
+                Text(
+                  'Zaloguj się, aby zapisać postępy',
+                  style: GoogleFonts.inter(
+                    fontSize: 16,
+                    color: AppTheme.textSecondary,
+                  ),
                 ),
-              ),
-              const Spacer(),
+                const Spacer(),
 
-              if (_isLoading)
-                const CircularProgressIndicator()
-              else ...[
-                _buildSocialButton(
-                  label: 'Kontynuuj z Google',
-                  icon: Icons.g_mobiledata, // Use custom asset in real app
-                  color: Colors.white,
-                  textColor: Colors.black,
-                  onPressed: _handleGoogleSignIn,
-                ),
-                const SizedBox(height: 16),
-                _buildSocialButton(
-                  label: 'Kontynuuj z Apple',
-                  icon: Icons.apple,
-                  color: Colors.black,
-                  textColor: Colors.white,
-                  onPressed: _handleAppleSignIn,
-                ),
-                const SizedBox(height: 24),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => const MapScreen()),
-                    );
-                  },
-                  child: Text(
-                    'Kontynuuj jako gość',
-                    style: GoogleFonts.inter(
-                      color: AppTheme.textMuted,
-                      decoration: TextDecoration.underline,
+                if (_isLoading)
+                  const CircularProgressIndicator()
+                else ...[
+                  _buildSocialButton(
+                    label: 'Kontynuuj z Google',
+                    icon: Icons.g_mobiledata,
+                    color: Colors.white,
+                    textColor: Colors.black,
+                    onPressed: _handleGoogleSignIn,
+                  ),
+                  const SizedBox(height: 16),
+                  _buildSocialButton(
+                    label: 'Kontynuuj z Apple',
+                    icon: Icons.apple,
+                    color: Colors.black,
+                    textColor: Colors.white,
+                    onPressed: _handleAppleSignIn,
+                  ),
+                  const SizedBox(height: 24),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => const MapScreen()),
+                      );
+                    },
+                    child: Text(
+                      'Kontynuuj jako gość',
+                      style: GoogleFonts.inter(
+                        color: AppTheme.textMuted,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
-                ),
+                ],
+                const SizedBox(height: 32),
               ],
-              const SizedBox(height: 32),
-            ],
+            ),
           ),
         ),
       ),

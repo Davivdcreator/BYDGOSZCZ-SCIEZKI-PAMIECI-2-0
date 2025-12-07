@@ -29,7 +29,7 @@ class _MapScreenState extends State<MapScreen> {
   int _currentNavIndex = 1; // Start at 1 (Mapa is center)
   LatLng? _userLocation;
   StreamSubscription<Position>? _positionStreamSubscription;
-  bool _showStatsIsland = false; // Controls stats island visibility
+  final bool _showStatsIsland = false; // Controls stats island visibility
 
   // Bydgoszcz center coordinates
   static const LatLng _bydgoszczCenter = LatLng(53.1235, 18.0084);
@@ -42,9 +42,7 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
     _initLocationTracking();
     // Auto-update unique monuments with new photos
-    final service = MonumentsService();
-    service.autoUpdateUniqueMonuments();
-    service.removeDuplicates(); // Auto-cleanup duplicates
+    MonumentsService().autoUpdateUniqueMonuments();
   }
 
   @override
@@ -171,7 +169,7 @@ class _MapScreenState extends State<MapScreen> {
 
                   // Combine Firestore data with static data (deduplicating by ID)
                   final firestoreMonuments = snapshot.data ?? [];
-                  final staticMonuments = MonumentsData.monuments;
+                  const staticMonuments = MonumentsData.monuments;
 
                   // Use a map to deduplicate, preferring Firestore version
                   final monumentMap = {
@@ -229,9 +227,9 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
 
-          // Re-center location button
+          // Re-center location button (bottom right, above nav)
           Positioned(
-            top: 80,
+            bottom: 100,
             right: 16,
             child: _buildLocationButton(),
           ),

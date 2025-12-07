@@ -11,9 +11,11 @@ class SeededMonumentsData {
       shortDescription: 'Park im. Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1565425, 17.8419121),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15782/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15782/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Rzeźba Łuczniczki. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Rzeźba Łuczniczki. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'mistrz_twardowski',
@@ -22,9 +24,11 @@ class SeededMonumentsData {
       shortDescription: 'Stary Rynek 15, Bydgoszcz',
       location: LatLng(53.1220396, 18.0012631),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/66/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/66/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Mistrz Twardowski. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Mistrz Twardowski. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'wioslarz_"na_mecie"',
@@ -33,9 +37,11 @@ class SeededMonumentsData {
       shortDescription: ', Bydgoszcz',
       location: LatLng(53.1297127, 18.0294488),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38629/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38629/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Wioślarz "Na mecie". Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Wioślarz "Na mecie". Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'oko',
@@ -44,7 +50,8 @@ class SeededMonumentsData {
       shortDescription: ', Bydgoszcz',
       location: LatLng(53.1297127, 18.0294488),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38630/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38630/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Oko. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -55,7 +62,8 @@ class SeededMonumentsData {
       shortDescription: ', Bydgoszcz',
       location: LatLng(53.1297127, 18.0294488),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38628/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/38628/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Wikliniarka. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -66,9 +74,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Stary Rynek 1, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/19545/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/19545/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Zegar z czasem bydgoskim. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Zegar z czasem bydgoskim. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'przechodzacy_przez_rzeke',
@@ -77,9 +87,11 @@ class SeededMonumentsData {
       shortDescription: 'Mostowa, Bydgoszcz',
       location: LatLng(53.1225128, 18.0008557),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15780/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15780/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Przechodzący przez Rzekę. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Przechodzący przez Rzekę. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'fontanna_potop',
@@ -88,9 +100,11 @@ class SeededMonumentsData {
       shortDescription: 'Park im. Kazimierza Wielkiego, Bydgoszcz',
       location: LatLng(53.1259125, 18.0056386),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1012/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1012/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Fontanna Potop. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Fontanna Potop. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_kopernika',
@@ -99,20 +113,25 @@ class SeededMonumentsData {
       shortDescription: 'skwer przy ul. Kopernika, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15791/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15791/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Kopernika. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Kopernika. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'laweczka_mariana_rejewskiego',
       name: 'Ławeczka Mariana Rejewskiego',
       description: 'Ławeczka Mariana Rejewskiego',
-      shortDescription: 'plac u zbiegu ulic: Gdańskiej i Śniadeckich, Bydgoszcz',
+      shortDescription:
+          'plac u zbiegu ulic: Gdańskiej i Śniadeckich, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/119/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/119/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Ławeczka Mariana Rejewskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Ławeczka Mariana Rejewskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_sw_jana_nepomucena',
@@ -121,9 +140,11 @@ class SeededMonumentsData {
       shortDescription: 'Farna 8, Bydgoszcz',
       location: LatLng(53.1225588, 17.9994507),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15800/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15800/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik św. Jana Nepomucena. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik św. Jana Nepomucena. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'rzezba_flisaka',
@@ -132,9 +153,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Mostowa, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15793/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15793/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Rzeźba Flisaka. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Rzeźba Flisaka. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_szwalbego',
@@ -143,9 +166,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Andrzeja Szwalbego, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15802/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15802/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Szwalbego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Szwalbego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_leona_barciszewskiego',
@@ -154,9 +179,11 @@ class SeededMonumentsData {
       shortDescription: 'Wełniany Rynek, Bydgoszcz',
       location: LatLng(53.1211592, 17.9954093),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15803/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15803/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Leona Barciszewskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Leona Barciszewskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_marii_konopnickiej',
@@ -165,9 +192,11 @@ class SeededMonumentsData {
       shortDescription: 'Marii Konopnickiej 26, Bydgoszcz',
       location: LatLng(53.1125824, 17.998367),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/473/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/473/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Marii Konopnickiej. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Marii Konopnickiej. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'tanczace_fontanny',
@@ -176,9 +205,11 @@ class SeededMonumentsData {
       shortDescription: 'skwer Krzysztofa Komedy, Bydgoszcz',
       location: LatLng(53.1294616, 18.0093279),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/505/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/505/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Tańczące Fontanny. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Tańczące Fontanny. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'cztery_pory_roku',
@@ -187,9 +218,11 @@ class SeededMonumentsData {
       shortDescription: 'aleja Powstańców Wielkopolskich, Bydgoszcz',
       location: LatLng(53.1291398, 18.0229442),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1213/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1213/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Cztery Pory Roku. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Cztery Pory Roku. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'wielkie_krzesla_na_wyspie_mlynskiej',
@@ -198,20 +231,11 @@ class SeededMonumentsData {
       shortDescription: 'Mennica 7, Bydgoszcz',
       location: LatLng(53.1221331, 17.9951543),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1459/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1459/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Wielkie Krzesła na Wyspie Młyńskiej. Odkryj moją historię w Bydgoszczy.',
-    ),
-    Monument(
-      id: 'kazimierz_wielki',
-      name: 'Kazimierz Wielki',
-      description: 'Kazimierz Wielki',
-      shortDescription: 'plac u zbiegu ulic: Trybunalskiej i Wały Jagiellońskie, Bydgoszcz',
-      location: LatLng(53.1235, 18.0084),
-      tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/417/xl.jpg',
-      tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Kazimierz Wielki. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Wielkie Krzesła na Wyspie Młyńskiej. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'brama_z_luster',
@@ -220,9 +244,11 @@ class SeededMonumentsData {
       shortDescription: 'Mazowiecka 5, Bydgoszcz',
       location: LatLng(53.1323362, 18.0044634),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/441/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/441/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Brama z luster. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Brama z luster. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'bydgoskie_autografy',
@@ -231,9 +257,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Długa, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/134/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/134/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Bydgoskie Autografy. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Bydgoskie Autografy. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_wiosel',
@@ -242,7 +270,8 @@ class SeededMonumentsData {
       shortDescription: 'Biwakowa 162, Bydgoszcz',
       location: LatLng(53.1969257, 17.9634238),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/123/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/123/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Pomnik Wioseł. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -253,9 +282,11 @@ class SeededMonumentsData {
       shortDescription: 'plac przed Operą Nova, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/132/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/132/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Łuczniczka Nova. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Łuczniczka Nova. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: '18_poludnik',
@@ -264,7 +295,8 @@ class SeededMonumentsData {
       shortDescription: 'Wyspa Młyńska, Bydgoszcz',
       location: LatLng(53.1227908, 17.9959977),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/122/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/122/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem 18. Południk. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -275,20 +307,25 @@ class SeededMonumentsData {
       shortDescription: 'Plac Wolności 3, Bydgoszcz',
       location: LatLng(53.1272563, 18.0058783),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15792/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15792/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Spodnie Andrzeja. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Spodnie Andrzeja. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_tysiaclecia_panstwa_polskiego',
       name: 'Pomnik Tysiąclecia Państwa Polskiego',
       description: 'Pomnik Tysiąclecia Państwa Polskiego',
-      shortDescription: 'skwer Leszka Białego u zbiegu ul. Staszica i Markwarta, Bydgoszcz',
+      shortDescription:
+          'skwer Leszka Białego u zbiegu ul. Staszica i Markwarta, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/116/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/116/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Tysiąclecia Państwa Polskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Tysiąclecia Państwa Polskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'apel_wiezniarek',
@@ -297,9 +334,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Farna, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15790/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15790/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Apel Więźniarek. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Apel Więźniarek. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_walki_i_meczenstwa',
@@ -308,9 +347,11 @@ class SeededMonumentsData {
       shortDescription: 'Stary Rynek, Bydgoszcz',
       location: LatLng(53.121963, 18.0002735),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/125/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/125/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Walki i Męczeństwa. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Walki i Męczeństwa. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_nieznanego_powstanca_wielkopolski',
@@ -319,9 +360,11 @@ class SeededMonumentsData {
       shortDescription: 'Skwer przy ul. Bernardyńskiej, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/126/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/126/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Nieznanego Powstańca Wielkopolskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Nieznanego Powstańca Wielkopolskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'runda_i',
@@ -330,7 +373,8 @@ class SeededMonumentsData {
       shortDescription: 'na dziedzińcu Galerii Miejskiej bwa, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/115/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/115/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Runda I. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -341,9 +385,11 @@ class SeededMonumentsData {
       shortDescription: 'Stary Rynek, Bydgoszcz',
       location: LatLng(53.121963, 18.0002735),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/19163/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/19163/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Fontanna Studzienka. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Fontanna Studzienka. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'trzy_gracje',
@@ -352,7 +398,8 @@ class SeededMonumentsData {
       shortDescription: 'Stary Port, Bydgoszcz',
       location: LatLng(53.1225098, 18.0056557),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15795/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15795/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Trzy Gracje. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -363,9 +410,11 @@ class SeededMonumentsData {
       shortDescription: 'Al. Mickiewicza, Bydgoszcz',
       location: LatLng(53.1311656, 18.0122779),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1211/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1211/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Przebudzenie Elfów. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Przebudzenie Elfów. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_wincentego_witosa',
@@ -374,9 +423,11 @@ class SeededMonumentsData {
       shortDescription: 'Park im. Wincentego Witosa, Bydgoszcz',
       location: LatLng(53.1567628, 18.1485041),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1481/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1481/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Wincentego Witosa. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Wincentego Witosa. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_poleglych_stary_fordon',
@@ -385,9 +436,11 @@ class SeededMonumentsData {
       shortDescription: 'Rynek, Bydgoszcz',
       location: LatLng(53.1494134, 18.1736546),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/34172/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/34172/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Poległych (Stary Fordon). Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Poległych (Stary Fordon). Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_henryka_sienkiewicza',
@@ -396,9 +449,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1518/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1518/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Henryka Sienkiewicza. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Henryka Sienkiewicza. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_ignacego_jana_paderewskiego',
@@ -407,9 +462,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1517/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1517/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Ignacego Jana Paderewskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Ignacego Jana Paderewskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_fryderyka_chopina',
@@ -418,9 +475,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1516/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1516/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Fryderyka Chopina. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Fryderyka Chopina. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_jana_sebastiana_bacha',
@@ -429,9 +488,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1491/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1491/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Jana Sebastiana Bacha. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Jana Sebastiana Bacha. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_claudea_debussy',
@@ -440,9 +501,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1490/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1490/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Claude\'a Debussy. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Claude\'a Debussy. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_ludomira_rozyckiego',
@@ -451,9 +514,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1489/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1489/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Ludomira Różyckiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Ludomira Różyckiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_stanislawa_moniuszki',
@@ -462,9 +527,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1488/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1488/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Stanisława Moniuszki. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Stanisława Moniuszki. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_mieczyslawa_karlowicza',
@@ -473,9 +540,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1487/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1487/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Mieczysława Karłowicza. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Mieczysława Karłowicza. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_antonina_dvoraka',
@@ -484,9 +553,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1484/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1484/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Antonina Dvoraka. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Antonina Dvoraka. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_karola_kurpinskiego',
@@ -495,9 +566,11 @@ class SeededMonumentsData {
       shortDescription: 'Park Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1297597, 18.0114344),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1483/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1483/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Karola Kurpińskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Karola Kurpińskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'zaraz_zagramy',
@@ -506,7 +579,8 @@ class SeededMonumentsData {
       shortDescription: 'Słowackiego, Bydgoszcz',
       location: LatLng(53.1300628, 18.008666),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1212/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1212/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
       aiPersonality: 'Jestem Zaraz Zagramy. Odkryj moją historię w Bydgoszczy.',
     ),
@@ -517,9 +591,11 @@ class SeededMonumentsData {
       shortDescription: 'Filarecka, Bydgoszcz',
       location: LatLng(53.1196543, 17.9902775),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1477/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1477/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Obelisk gen. Henryka Dąbrowskiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Obelisk gen. Henryka Dąbrowskiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'igor_strawinski',
@@ -528,9 +604,11 @@ class SeededMonumentsData {
       shortDescription: 'Park im. Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1565425, 17.8419121),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1388/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1388/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Igor Strawinski. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Igor Strawinski. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'grazyna_bacewicz',
@@ -539,9 +617,11 @@ class SeededMonumentsData {
       shortDescription: 'Park im. Jana Kochanowskiego, Bydgoszcz',
       location: LatLng(53.1565425, 17.8419121),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1390/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1390/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Grażyna Bacewicz. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Grażyna Bacewicz. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'polery_na_nabrzezu_urbanyiego',
@@ -550,9 +630,11 @@ class SeededMonumentsData {
       shortDescription: 'okolice Mostowej przy Brdzie, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/135/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/135/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Polery na nabrzeżu Urbanyiego. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Polery na nabrzeżu Urbanyiego. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'obelisk_na_placu_wolnosci',
@@ -561,9 +643,11 @@ class SeededMonumentsData {
       shortDescription: 'Plac Wolności, Bydgoszcz',
       location: LatLng(53.1271358, 18.0056659),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15797/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15797/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Obelisk na Placu Wolności. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Obelisk na Placu Wolności. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'kamien_upamietniajacy_bydgoskich_zydow',
@@ -572,9 +656,11 @@ class SeededMonumentsData {
       shortDescription: 'Jana Kazimierza, Bydgoszcz',
       location: LatLng(53.1210068, 18.0006816),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1554/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/1554/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Kamień upamiętniający bydgoskich Żydów. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Kamień upamiętniający bydgoskich Żydów. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_wedrowca',
@@ -583,9 +669,11 @@ class SeededMonumentsData {
       shortDescription: 'Gdańska / Pomorska, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15798/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/15798/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik Wędrowca. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik Wędrowca. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'pomnik_krasnoludkow',
@@ -594,9 +682,11 @@ class SeededMonumentsData {
       shortDescription: 'Konopnickiej, Bydgoszcz',
       location: LatLng(53.1110111, 17.9959411),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/472/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/472/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Pomnik krasnoludków. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Pomnik krasnoludków. Odkryj moją historię w Bydgoszczy.',
     ),
     Monument(
       id: 'makieta_dawnej_bydgoszczy',
@@ -605,9 +695,11 @@ class SeededMonumentsData {
       shortDescription: 'ul. Mostowa, Bydgoszcz',
       location: LatLng(53.1235, 18.0084),
       tier: MonumentTier.tierB,
-      imageUrl: 'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/198/xl.jpg',
+      imageUrl:
+          'https://visitbydgoszcz.pl//images/com_adsmanager/ads//media/photos/198/xl.jpg',
       tags: ['Bydgoszcz', 'Zabytek'],
-      aiPersonality: 'Jestem Makieta dawnej Bydgoszczy. Odkryj moją historię w Bydgoszczy.',
+      aiPersonality:
+          'Jestem Makieta dawnej Bydgoszczy. Odkryj moją historię w Bydgoszczy.',
     ),
   ];
 }

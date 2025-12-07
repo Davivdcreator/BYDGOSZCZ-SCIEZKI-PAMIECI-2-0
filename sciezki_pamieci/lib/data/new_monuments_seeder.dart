@@ -1,6 +1,3 @@
-import 'package:latlong2/latlong.dart';
-import '../models/monument.dart';
-import '../theme/tier_colors.dart';
 
 final List<Map<String, dynamic>> newUniqueMonuments = [
   {

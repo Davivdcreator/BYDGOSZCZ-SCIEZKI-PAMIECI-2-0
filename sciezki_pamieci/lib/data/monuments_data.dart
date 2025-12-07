@@ -28,27 +28,6 @@ class MonumentsData {
       ],
     ),
     Monument(
-      id: 'przechodzacy_przez_rzeke',
-      name: 'Przechodzący przez rzekę',
-      description:
-          'Rzeźba balansująca na linie nad rzeką Brdą. Upamiętnia wejście Polski do Unii Europejskiej. Została odsłonięta 1 maja 2004 roku.',
-      shortDescription: 'Balansujący nad Brdą',
-      location: LatLng(53.1230, 18.0030),
-      tier: MonumentTier.tierS,
-      imageUrl:
-          'https://visitbydgoszcz.pl/images/zimb/przechodzacy%20przez%20rzeke.jpg',
-      year: 2004,
-      architect: 'Jerzy Kędziora',
-      style: 'Nowoczesny / Balansujący',
-      tags: ['Rzeźba', 'Rzeka', 'Współczesna'],
-      aiPersonality:
-          'Spokojny, skupiony na równowadze. Filozofuje o życiu "pomiędzy" brzegami.',
-      sampleQuestions: [
-        'Czy boisz się, że spadniesz?',
-        'Co symbolizuje Twoja obecność nad wodą?',
-      ],
-    ),
-    Monument(
       id: 'kazimierz_wielki',
       name: 'Pomnik Kazimierza Wielkiego',
       description:
@@ -67,27 +46,6 @@ class MonumentsData {
       sampleQuestions: [
         'Dlaczego nadałeś prawa miejskie Bydgoszczy?',
         'Jak wyglądała Polska za Twoich czasów?',
-      ],
-    ),
-    Monument(
-      id: 'fontanna_potop',
-      name: 'Fontanna Potop',
-      description:
-          'Zrekonstruowana monumentalna fontanna w Parku Kazimierza Wielkiego. Przedstawia biblijny potop i walkę ludzi oraz zwierząt o przetrwanie.',
-      shortDescription: 'Biblijna scena w parku',
-      location: LatLng(53.1265, 18.0060),
-      tier: MonumentTier.tierA,
-      imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Fontanna_Potop_Bydgoszcz_2014.jpg/1200px-Fontanna_Potop_Bydgoszcz_2014.jpg',
-      year: 1904,
-      architect: 'Ferdinand Lepcke',
-      style: 'Secesja',
-      tags: ['Fontanna', 'Park', 'Biblia'],
-      aiPersonality:
-          'Dramatyczna, emocjonalna, wielogłosowa. Opowiada o żywiole wody i walce o życie.',
-      sampleQuestions: [
-        'Co przedstawia ta scena?',
-        'Jaka jest historia Twojej odbudowy?',
       ],
     ),
     Monument(
