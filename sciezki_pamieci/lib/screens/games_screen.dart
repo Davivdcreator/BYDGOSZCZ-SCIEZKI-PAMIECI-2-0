@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../models/game.dart';
 import '../data/games_data.dart';
+import 'map_screen.dart';
 
 /// Games Screen - Discover city exploration games
 class GamesScreen extends StatefulWidget {
@@ -433,8 +434,14 @@ class _GamesScreenState extends State<GamesScreen> {
                     height: 56,
                     child: ElevatedButton(
                       onPressed: () {
+                        // Close bottom sheet and navigate to map with active game
                         Navigator.pop(context);
-                        // TODO: Start game logic
+                        Navigator.pop(context); // Pop GamesScreen
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (_) => MapScreen(activeGame: game),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.primaryBlue,

@@ -9,7 +9,7 @@ class AIChatService {
   static const String _apiKey =
       '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';
   static const String _apiUrl = 'https://api.openai.com/v1/chat/completions';
-  static const String _model = 'gpt-5-mini';
+  static const String _model = 'gpt-4o-mini';
 
   /// Build system prompt for the monument
   static String _buildSystemPrompt(Monument monument) {

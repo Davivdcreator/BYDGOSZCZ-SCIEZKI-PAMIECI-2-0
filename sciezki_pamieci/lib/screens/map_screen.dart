@@ -8,7 +8,9 @@ import '../theme/app_theme.dart';
 import '../theme/tier_colors.dart';
 import '../data/monuments_data.dart';
 import '../models/monument.dart';
+import '../models/game.dart';
 import '../services/monuments_service.dart';
+import '../services/game_state_service.dart';
 
 import 'discovery_card.dart';
 import 'profile_screen.dart';
@@ -17,7 +19,9 @@ import '../widgets/stats_island.dart';
 
 /// Screen 2: Main Map Screen - Clean modern design
 class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+  final Game? activeGame;
+
+  const MapScreen({super.key, this.activeGame});
 
   @override
   State<MapScreen> createState() => _MapScreenState();
@@ -29,7 +33,11 @@ class _MapScreenState extends State<MapScreen> {
   int _currentNavIndex = 1; // Start at 1 (Mapa is center)
   LatLng? _userLocation;
   StreamSubscription<Position>? _positionStreamSubscription;
+  StreamSubscription<Game?>? _gameStateSubscription;
   final bool _showStatsIsland = false; // Controls stats island visibility
+
+  Game? _activeGame;
+  List<Monument> _cachedMonuments = [];
 
   // Bydgoszcz center coordinates
   static const LatLng _bydgoszczCenter = LatLng(53.1235, 18.0084);
@@ -40,6 +48,20 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
+    _activeGame = widget.activeGame;
+
+    // If game passed via constructor, start it
+    if (widget.activeGame != null) {
+      GameStateService().startGame(widget.activeGame!);
+    }
+
+    // Listen to game state changes
+    _gameStateSubscription = GameStateService().gameStream.listen((game) {
+      if (mounted) {
+        setState(() => _activeGame = game);
+      }
+    });
+
     _initLocationTracking();
     // Auto-update unique monuments with new photos
     MonumentsService().autoUpdateUniqueMonuments();
@@ -48,6 +70,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void dispose() {
     _positionStreamSubscription?.cancel();
+    _gameStateSubscription?.cancel();
     super.dispose();
   }
 
@@ -113,6 +136,49 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  void _endGame() {
+    GameStateService().endGame();
+    setState(() => _activeGame = null);
+  }
+
+  // Get filtered monuments based on active game
+  List<Monument> _filterMonuments(List<Monument> allMonuments) {
+    if (_activeGame == null) {
+      return allMonuments;
+    }
+    // Filter to only show monuments in the active game
+    return allMonuments
+        .where((m) => _activeGame!.monumentIds.contains(m.id))
+        .toList();
+  }
+
+  // Build route polyline from user location through monuments
+  List<LatLng> _buildRoute(List<Monument> monuments) {
+    if (_activeGame == null || monuments.isEmpty) return [];
+
+    // Order monuments according to monumentIds order
+    final orderedMonuments = <Monument>[];
+    for (final id in _activeGame!.monumentIds) {
+      final monument = monuments.where((m) => m.id == id).firstOrNull;
+      if (monument != null) {
+        orderedMonuments.add(monument);
+      }
+    }
+
+    // Build route: user location → monuments → end point
+    final routePoints = <LatLng>[];
+
+    // Start from user's current location if available
+    if (_userLocation != null) {
+      routePoints.add(_userLocation!);
+    }
+
+    // Add all monument locations in order
+    routePoints.addAll(orderedMonuments.map((m) => m.location));
+
+    return routePoints;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,10 +228,6 @@ class _MapScreenState extends State<MapScreen> {
                   if (snapshot.hasError) {
                     print('StreamBuilder Error: ${snapshot.error}');
                   }
-                  if (snapshot.hasData) {
-                    print(
-                        'StreamBuilder has data: ${snapshot.data?.length} items');
-                  }
 
                   // Combine Firestore data with static data (deduplicating by ID)
                   final firestoreMonuments = snapshot.data ?? [];
@@ -177,7 +239,11 @@ class _MapScreenState extends State<MapScreen> {
                     for (var m in firestoreMonuments) m.id: m,
                   };
 
-                  final monuments = monumentMap.values.toList();
+                  final allMonuments = monumentMap.values.toList();
+
+                  // Filter monuments if game is active
+                  final monuments = _filterMonuments(allMonuments);
+                  _cachedMonuments = monuments;
 
                   return MarkerLayer(
                     markers: monuments.map((monument) {
@@ -191,6 +257,21 @@ class _MapScreenState extends State<MapScreen> {
                   );
                 },
               ),
+
+              // Route polyline (only when game is active)
+              if (_activeGame != null && _cachedMonuments.isNotEmpty)
+                PolylineLayer(
+                  polylines: [
+                    Polyline(
+                      points: _buildRoute(_cachedMonuments),
+                      strokeWidth: 5.0,
+                      color: AppTheme.primaryBlue.withOpacity(0.8),
+                      borderStrokeWidth: 3.0,
+                      borderColor: Colors.white.withOpacity(0.9),
+                      isDotted: false,
+                    ),
+                  ],
+                ),
 
               // User location marker
               if (_userLocation != null)
@@ -215,17 +296,27 @@ class _MapScreenState extends State<MapScreen> {
             ],
           ),
 
-          // Stats Island (replaces search bar)
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: StatsIsland(
-              isVisible: _showStatsIsland,
-              activeGameTitle: null, // TODO: Connect to active game state
-              activeGameTime: null,
+          // Active game banner
+          if (_activeGame != null)
+            Positioned(
+              top: MediaQuery.of(context).padding.top + 8,
+              left: 16,
+              right: 16,
+              child: _buildActiveGameBanner(),
             ),
-          ),
+
+          // Stats Island (when no game active)
+          if (_activeGame == null)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: StatsIsland(
+                isVisible: _showStatsIsland,
+                activeGameTitle: null,
+                activeGameTime: null,
+              ),
+            ),
 
           // Re-center location button (bottom right, above nav)
           Positioned(
@@ -240,6 +331,70 @@ class _MapScreenState extends State<MapScreen> {
             left: 0,
             right: 0,
             child: _buildBottomNav(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActiveGameBanner() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppTheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: AppTheme.cardShadow,
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: AppTheme.primaryBlue.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.gamepad,
+              color: AppTheme.primaryBlue,
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _activeGame!.title,
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  '${_activeGame!.monumentIds.length} punktów',
+                  style: GoogleFonts.inter(
+                    fontSize: 12,
+                    color: AppTheme.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          TextButton(
+            onPressed: _endGame,
+            child: Text(
+              'Zakończ',
+              style: GoogleFonts.inter(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.red,
+              ),
+            ),
           ),
         ],
       ),
@@ -402,6 +557,7 @@ class _MapScreenState extends State<MapScreen> {
       builder: (context) => DiscoveryCard(
         monument: monument,
         isDiscovered: _discoveredIds.contains(monument.id),
+        userLocation: _userLocation,
         onDiscover: () {
           setState(() {
             if (!_discoveredIds.contains(monument.id)) {

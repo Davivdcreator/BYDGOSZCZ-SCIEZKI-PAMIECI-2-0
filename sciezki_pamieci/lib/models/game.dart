@@ -9,6 +9,7 @@ class Game {
   final String? shortDescription; // Short catchy description for cards
   final String? imagePath;
   final String? badge;
+  final List<String> monumentIds; // IDs of monuments included in this game
 
   const Game({
     required this.id,
@@ -20,6 +21,7 @@ class Game {
     this.shortDescription,
     this.imagePath,
     this.badge,
+    this.monumentIds = const [],
   });
 
   factory Game.fromJson(Map<String, dynamic> json) {
@@ -33,6 +35,9 @@ class Game {
       shortDescription: json['shortDescription'] as String?,
       imagePath: json['imagePath'] as String?,
       badge: json['badge'] as String?,
+      monumentIds: json['monumentIds'] != null
+          ? List<String>.from(json['monumentIds'] as List)
+          : const [],
     );
   }
 
@@ -47,6 +52,7 @@ class Game {
       'shortDescription': shortDescription,
       'imagePath': imagePath,
       'badge': badge,
+      'monumentIds': monumentIds,
     };
   }
 }

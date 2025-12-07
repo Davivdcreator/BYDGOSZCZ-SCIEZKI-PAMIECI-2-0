@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latlong2/latlong.dart';
 import '../theme/app_theme.dart';
 import '../theme/tier_colors.dart';
 import '../models/monument.dart';
@@ -12,13 +13,52 @@ class DiscoveryCard extends StatelessWidget {
   final Monument monument;
   final bool isDiscovered;
   final VoidCallback? onDiscover;
+  final LatLng? userLocation;
 
   const DiscoveryCard({
     super.key,
     required this.monument,
     this.isDiscovered = false,
     this.onDiscover,
+    this.userLocation,
   });
+
+  /// Calculate distance in meters from user to monument
+  double? _calculateDistanceMeters() {
+    if (userLocation == null) return null;
+    const distance = Distance();
+    return distance.as(
+      LengthUnit.Meter,
+      userLocation!,
+      monument.location,
+    );
+  }
+
+  /// Format distance for display
+  String _formatDistance(double? meters) {
+    if (meters == null) return 'Nieznana odległość';
+    if (meters < 1000) {
+      return '${meters.round()} m';
+    } else {
+      return '${(meters / 1000).toStringAsFixed(1)} km';
+    }
+  }
+
+  /// Estimate walking time (average 5 km/h = 83.3 m/min)
+  String _estimateWalkingTime(double? meters) {
+    if (meters == null) return '~? min';
+    const walkingSpeedMetersPerMinute = 83.3;
+    final minutes = meters / walkingSpeedMetersPerMinute;
+    if (minutes < 1) {
+      return '<1 min';
+    } else if (minutes < 60) {
+      return '~${minutes.round()} min';
+    } else {
+      final hours = (minutes / 60).floor();
+      final remainingMinutes = (minutes % 60).round();
+      return '~${hours}h ${remainingMinutes}min';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -199,6 +239,10 @@ class DiscoveryCard extends StatelessWidget {
   }
 
   Widget _buildMetadataRow() {
+    final distanceMeters = _calculateDistanceMeters();
+    final walkingTime = _estimateWalkingTime(distanceMeters);
+    final distanceText = _formatDistance(distanceMeters);
+
     return Row(
       children: [
         const Icon(
@@ -208,7 +252,7 @@ class DiscoveryCard extends StatelessWidget {
         ),
         const SizedBox(width: 4),
         Text(
-          '~15 min',
+          walkingTime,
           style: GoogleFonts.inter(
             fontSize: 13,
             color: AppTheme.textSecondary,
@@ -223,7 +267,7 @@ class DiscoveryCard extends StatelessWidget {
         const SizedBox(width: 4),
         Expanded(
           child: Text(
-            'Centrum Bydgoszczy',
+            distanceText,
             style: GoogleFonts.inter(
               fontSize: 13,
               color: AppTheme.primaryBlue,
