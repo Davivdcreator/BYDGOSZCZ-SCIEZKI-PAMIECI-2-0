@@ -121,11 +121,25 @@ ZASADY ROZMOWY:
         final content = data['choices'][0]['message']['content'] as String;
         return content.trim();
       } else {
-        print('OpenAI API Error: ${response.statusCode} - ${response.body}');
+        // Detailed error logging
+        final errorBody = response.body;
+        print('OpenAI API Error: ${response.statusCode}');
+        print('Error details: $errorBody');
+
+        // Check for specific error types
+        if (response.statusCode == 401) {
+          print('Authentication error - API key may be invalid or expired');
+        } else if (response.statusCode == 429) {
+          print('Rate limit exceeded - too many requests');
+        } else if (response.statusCode == 400) {
+          print('Bad request - check model name and parameters');
+        }
+
         return _getFallbackResponse(userMessage, monument);
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       print('AI Chat Error: $e');
+      print('Stack trace: $stackTrace');
       return _getFallbackResponse(userMessage, monument);
     }
   }
